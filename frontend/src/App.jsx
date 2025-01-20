@@ -1,11 +1,14 @@
-import React from 'react'
-
+import React from "react";
+import Header from "./components/Header/Header";
+import "./global/global.css";
+import WhatsAppButton from "./global/whatsapp-button/Whatsapp-Button"; './global/whatsapp-button/Whatsapp-Button';
 function App() {
   return (
-    <div className='bg-black w-[500px] h-[500px]'>
-      
-    </div>
-  )
+    <>
+      <Header/>
+      <WhatsAppButton/>
+    </>
+  );
 }
 
-export default App
+export default App;
