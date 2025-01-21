@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import 'dotenv/config'
-
+import router from './router.js'
 const app = express()
 
 
@@ -33,6 +33,9 @@ app.get("/", async (req, res) => {
         res.status(500).json({ error: "Initialization error" });
     }
 });
+
+app.use("/api",router)
+
 
 
 const port = process.env.PORT || 3000;
