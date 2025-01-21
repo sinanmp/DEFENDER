@@ -3,8 +3,8 @@ import "./Header.css";
 import logo from "../../assets/icons/logo_only.png";
 import logoText from "../../assets/icons/logo-text.png";
 
-function Header() {
-  const [activeNav, setActiveNav] = useState("#home");
+function Header({activeNav,setActiveNav}) {
+  
 
   return (
     <header className="flex justify-between items-center px-[6vw] h-[12vh]">
@@ -21,9 +21,9 @@ function Header() {
           Home
         </a>
         <a
-          href="#models"
-          className={`nav-link ${activeNav === "#models" ? "active" : ""}`}
-          onClick={() => setActiveNav("#models")}
+          href="#products"
+          className={`nav-link ${activeNav === "#products" ? "active" : ""}`}
+          onClick={() => setActiveNav("#products")}
         >
           Products
         </a>
