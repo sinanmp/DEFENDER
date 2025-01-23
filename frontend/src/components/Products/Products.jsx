@@ -1,6 +1,97 @@
 import React from "react";
+import ProductCard from "./ProductsCard";
+import ProductList from "./ProductsCard";
+import AllProductsList from "../AllProducts/AllProducts";
 
 function Products({ activeNav }) {
+  // Fetch Latest 8 Products HERE instead of the SAMPLE PRODUCTS
+  const sampleProducts = [
+    {
+      id: 0,
+      name: "Stylish Jacket",
+      whatsappLink:
+        "https://wa.me/1234567890?text=I'm%20interested%20in%20Stylish%20Jacket",
+      media: [
+        { type: "image", src: "https://via.placeholder.com/300" },
+        { type: "image", src: "https://via.placeholder.com/300/0000FF" },
+        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+      ],
+    },
+    {
+      id: 1,
+      name: "Classic Sneakers",
+      whatsappLink:
+        "https://wa.me/1234567890?text=I'm%20interested%20in%20Classic%20Sneakers",
+      media: [
+        { type: "image", src: "https://via.placeholder.com/300" },
+        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+      ],
+    },
+    {
+      id: 2,
+      name: "Stylish Sneakers",
+      whatsappLink:
+        "https://wa.me/1234567890?text=I'm%20interested%20in%20Classic%20Sneakers",
+      media: [
+        { type: "image", src: "https://via.placeholder.com/300" },
+        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+      ],
+    },
+    {
+      id: 3,
+      name: "Classic Jackets",
+      whatsappLink:
+        "https://wa.me/1234567890?text=I'm%20interested%20in%20Classic%20Sneakers",
+      media: [
+        { type: "image", src: "https://via.placeholder.com/300" },
+        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+      ],
+    },
+    {
+      id: 4,
+      name: "Stylish Jacket",
+      whatsappLink:
+        "https://wa.me/1234567890?text=I'm%20interested%20in%20Stylish%20Jacket",
+      media: [
+        { type: "image", src: "https://via.placeholder.com/300" },
+        { type: "image", src: "https://via.placeholder.com/300/0000FF" },
+        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+      ],
+    },
+    {
+      id: 4,
+      name: "Stylish Jacket",
+      whatsappLink:
+        "https://wa.me/1234567890?text=I'm%20interested%20in%20Stylish%20Jacket",
+      media: [
+        { type: "image", src: "https://via.placeholder.com/300" },
+        { type: "image", src: "https://via.placeholder.com/300/0000FF" },
+        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+      ],
+    },
+    {
+      id: 4,
+      name: "Stylish Jacket",
+      whatsappLink:
+        "https://wa.me/1234567890?text=I'm%20interested%20in%20Stylish%20Jacket",
+      media: [
+        { type: "image", src: "https://via.placeholder.com/300" },
+        { type: "image", src: "https://via.placeholder.com/300/0000FF" },
+        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+      ],
+    },
+    {
+      id: 4,
+      name: "Stylish Jacket",
+      whatsappLink:
+        "https://wa.me/1234567890?text=I'm%20interested%20in%20Stylish%20Jacket",
+      media: [
+        { type: "image", src: "https://via.placeholder.com/300" },
+        { type: "image", src: "https://via.placeholder.com/300/0000FF" },
+        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+      ],
+    },
+  ];
   return (
     <>
       {activeNav === "#home" && (
@@ -25,9 +116,9 @@ function Products({ activeNav }) {
                 – it's how you express yourself, conquer challenges, and make a
                 statement. <br />
                 <span className="xl:block hidden">
-                Our collection is thoughtfully crafted to combine cutting-edge
-                style with unmatched durability, ensuring you’re always ready
-                for whatever life throws your way. <br />
+                  Our collection is thoughtfully crafted to combine cutting-edge
+                  style with unmatched durability, ensuring you’re always ready
+                  for whatever life throws your way. <br />
                 </span>
                 Whether you're dressing for a casual day out or a formal event,
                 Defender offers premium-quality products that prioritize
@@ -45,15 +136,10 @@ function Products({ activeNav }) {
         </section>
       )}
       {activeNav === "#products" && (
-        <section id="products" className="h-full p-12 bg-gray-100">
-          <h2 className="text-2xl font-bold text-center">Our Products</h2>
-          {/* Add content for the Products section here */}
-        </section>
-      )}
-      {activeNav === "#about" && (
-        <section id="about" className="h-full p-12 bg-gray-200">
-          <h2 className="text-2xl font-bold text-center">About Us</h2>
-          {/* Add content for the About section here */}
+        <section id="products" className="p-12 pt-3 w-full">
+          <div className="">
+            <ProductList products={sampleProducts}/>
+          </div>
         </section>
       )}
       {activeNav === "#contact" && (
@@ -62,6 +148,14 @@ function Products({ activeNav }) {
           {/* Add content for the Contact section here */}
         </section>
       )}
+      {activeNav === "#allProducts" && (
+        <section id = "allProducts" className="p-12 pt-3 w-full">
+          <div>
+            <AllProductsList/>
+          </div>
+        </section>
+      )}
+      
     </>
   );
 }

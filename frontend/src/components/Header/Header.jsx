@@ -7,10 +7,10 @@ function Header({activeNav,setActiveNav}) {
   
 
   return (
-    <header className="flex justify-between items-center px-[6vw] h-[12vh]">
-      <div className="flex items-center gap-3">
-        <img className="h-[6vh]" src={logo} alt="Logo" />
-        <img className="h-[9vh] w-auto" src={logoText} alt="Logo Text" />
+    <header className="flex justify-between items-center px-[6vw] h-auto">
+      <div className="flex flex-col items-center ">
+        <img className="h-[2.5vw] pt-[0.5vw]" src={logo} alt="Logo" />
+        <img className="h-[3vw] w-auto" src={logoText} alt="Logo Text" />
       </div>
       <nav className="nav flex gap-[3vw]">
         <a
@@ -22,17 +22,10 @@ function Header({activeNav,setActiveNav}) {
         </a>
         <a
           href="#products"
-          className={`nav-link ${activeNav === "#products" ? "active" : ""}`}
+          className={`nav-link ${activeNav === "#products" || activeNav === "#allProducts"? "active" : ""}`}
           onClick={() => setActiveNav("#products")}
         >
           Products
-        </a>
-        <a
-          href="#about"
-          className={`nav-link ${activeNav === "#about" ? "active" : ""}`}
-          onClick={() => setActiveNav("#about")}
-        >
-          About
         </a>
         <a
           href="#contact"

@@ -25,11 +25,14 @@ function WhatsAppButton() {
       </div>
       {showMessage && (
         <div className="whatsapp-popup">
-          <span className="typing-text">Have a question? <span className="font-bold">Contact us on WhatsApp!</span> </span>
+          <span className="typing-text">
+            Have a question?{" "}
+            <span className="font-bold">Contact us on WhatsApp!</span>{" "}
+          </span>
         </div>
       )}
     </div>
   );
 }
 
-export default WhatsAppButton;
+export default WhatsAppButton
