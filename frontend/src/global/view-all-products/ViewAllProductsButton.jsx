@@ -2,7 +2,8 @@ import { useNavigate } from "react-router-dom";
 
 function ViewAllProducts({ activeNav, setActiveNav }) {
   // Check if the activeNav is "allProducts" or "products"
-  const buttonText = activeNav === "#allProducts" ? "Go Back" : "View All Products";
+  const buttonText =
+    activeNav === "#allProducts" ? "Go Back" : "View All Products";
 
   return (
     <>
@@ -19,7 +20,12 @@ function ViewAllProducts({ activeNav, setActiveNav }) {
                 setActiveNav("#allProducts");
               }
             }}
-            className="bg-gray-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-700 transition duration-200 shadow-lg flex items-center justify-center border-2 border-gray-600 hover:border-gray-500"
+            className="text-sm text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-700 transition duration-200 shadow-lg flex items-center justify-center border-2 border-white border-opacity-50 hover:border-gray-500"
+            style={{
+              background: "rgba(31, 41, 55, 0.3)", // Semi-transparent background
+              backdropFilter: "blur(12px)", // Frosted-glass effect
+              WebkitBackdropFilter: "blur(12px)", // Safari support
+            }}
           >
             {buttonText}
           </button>

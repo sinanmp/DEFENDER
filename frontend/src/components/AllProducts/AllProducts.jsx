@@ -3,11 +3,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
+import Stack from "../Products/StackProducts";
+import StackProducts from "../Products/StackProducts";
 
 function AllProductsCard({ media, name, whatsappLink }) {
-  
-
-
   return (
     <div className="relative max-w-xs mx-auto bg-gray-100 shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
       {/* Media Carousel */}
@@ -74,106 +73,111 @@ function AllProductsCard({ media, name, whatsappLink }) {
   );
 }
 
-function AllProductsList({ }) {
-    // Fetch All Products Function Here
-    const sampleProducts = [
-        {
-          id: 0,
-          name: "Stylish Jacket",
-          whatsappLink:
-            "https://wa.me/1234567890?text=I'm%20interested%20in%20Stylish%20Jacket",
-          media: [
-            { type: "image", src: "https://via.placeholder.com/300" },
-            { type: "image", src: "https://via.placeholder.com/300/0000FF" },
-            { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-          ],
-        },
-        {
-          id: 1,
-          name: "Classic Sneakers",
-          whatsappLink:
-            "https://wa.me/1234567890?text=I'm%20interested%20in%20Classic%20Sneakers",
-          media: [
-            { type: "image", src: "https://via.placeholder.com/300" },
-            { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-          ],
-        },
-        {
-          id: 2,
-          name: "Stylish Sneakers",
-          whatsappLink:
-            "https://wa.me/1234567890?text=I'm%20interested%20in%20Classic%20Sneakers",
-          media: [
-            { type: "image", src: "https://via.placeholder.com/300" },
-            { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-          ],
-        },
-        {
-          id: 3,
-          name: "Classic Jackets",
-          whatsappLink:
-            "https://wa.me/1234567890?text=I'm%20interested%20in%20Classic%20Sneakers",
-          media: [
-            { type: "image", src: "https://via.placeholder.com/300" },
-            { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-          ],
-        },
-        {
-          id: 4,
-          name: "Stylish Jacket",
-          whatsappLink:
-            "https://wa.me/1234567890?text=I'm%20interested%20in%20Stylish%20Jacket",
-          media: [
-            { type: "image", src: "https://via.placeholder.com/300" },
-            { type: "image", src: "https://via.placeholder.com/300/0000FF" },
-            { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-          ],
-        },
-        {
-          id: 4,
-          name: "Stylish Jacket",
-          whatsappLink:
-            "https://wa.me/1234567890?text=I'm%20interested%20in%20Stylish%20Jacket",
-          media: [
-            { type: "image", src: "https://via.placeholder.com/300" },
-            { type: "image", src: "https://via.placeholder.com/300/0000FF" },
-            { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-          ],
-        },
-        {
-          id: 4,
-          name: "Stylish Jacket",
-          whatsappLink:
-            "https://wa.me/1234567890?text=I'm%20interested%20in%20Stylish%20Jacket",
-          media: [
-            { type: "image", src: "https://via.placeholder.com/300" },
-            { type: "image", src: "https://via.placeholder.com/300/0000FF" },
-            { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-          ],
-        },
-        {
-          id: 4,
-          name: "Stylish Jacket",
-          whatsappLink:
-            "https://wa.me/1234567890?text=I'm%20interested%20in%20Stylish%20Jacket",
-          media: [
-            { type: "image", src: "https://via.placeholder.com/300" },
-            { type: "image", src: "https://via.placeholder.com/300/0000FF" },
-            { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-          ],
-        },
-        {
-          id: 4,
-          name: "Stylish Jacket",
-          whatsappLink:
-            "https://wa.me/1234567890?text=I'm%20interested%20in%20Stylish%20Jacket",
-          media: [
-            { type: "image", src: "https://via.placeholder.com/300" },
-            { type: "image", src: "https://via.placeholder.com/300/0000FF" },
-            { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-          ],
-        },
-      ];
+function AllProductsList({ image }) {
+  // Fetch All Products Function Here
+  const sampleProducts = [
+    {
+      id: 0,
+      name: "Stylish Jacket",
+      whatsappLink:
+        "https://wa.me/1234567890?text=I'm%20interested%20in%20Stylish%20Jacket",
+      media: [
+        { type: "image", src: "https://via.placeholder.com/300" },
+        { type: "image", src: "https://via.placeholder.com/300/0000FF" },
+        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+      ],
+    },
+    {
+      id: 1,
+      name: "Classic Sneakers",
+      whatsappLink:
+        "https://wa.me/1234567890?text=I'm%20interested%20in%20Classic%20Sneakers",
+      media: [
+        { type: "image", src: "https://via.placeholder.com/300" },
+        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+      ],
+    },
+    {
+      id: 2,
+      name: "Stylish Sneakers",
+      whatsappLink:
+        "https://wa.me/1234567890?text=I'm%20interested%20in%20Classic%20Sneakers",
+      media: [
+        { type: "image", src: "https://via.placeholder.com/300" },
+        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+      ],
+    },
+    {
+      id: 3,
+      name: "Classic Jackets",
+      whatsappLink:
+        "https://wa.me/1234567890?text=I'm%20interested%20in%20Classic%20Sneakers",
+      media: [
+        { type: "image", src: "https://via.placeholder.com/300" },
+        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+      ],
+    },
+    {
+      id: 4,
+      name: "Stylish Jacket",
+      whatsappLink:
+        "https://wa.me/1234567890?text=I'm%20interested%20in%20Stylish%20Jacket",
+      media: [
+        { type: "image", src: "https://via.placeholder.com/300" },
+        { type: "image", src: "https://via.placeholder.com/300/0000FF" },
+        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+      ],
+    },
+    {
+      id: 4,
+      name: "Stylish Jacket",
+      whatsappLink:
+        "https://wa.me/1234567890?text=I'm%20interested%20in%20Stylish%20Jacket",
+      media: [
+        { type: "image", src: "https://via.placeholder.com/300" },
+        { type: "image", src: "https://via.placeholder.com/300/0000FF" },
+        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+      ],
+    },
+    {
+      id: 4,
+      name: "Stylish Jacket",
+      whatsappLink:
+        "https://wa.me/1234567890?text=I'm%20interested%20in%20Stylish%20Jacket",
+      media: [
+        { type: "image", src: "https://via.placeholder.com/300" },
+        { type: "image", src: "https://via.placeholder.com/300/0000FF" },
+        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+      ],
+    },
+    {
+      id: 4,
+      name: "Stylish Jacket",
+      whatsappLink:
+        "https://wa.me/1234567890?text=I'm%20interested%20in%20Stylish%20Jacket",
+      media: [
+        { type: "image", src: "https://via.placeholder.com/300" },
+        { type: "image", src: "https://via.placeholder.com/300/0000FF" },
+        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+      ],
+    },
+    {
+      id: 4,
+      name: "Stylish Jacket",
+      whatsappLink:
+        "https://wa.me/1234567890?text=I'm%20interested%20in%20Stylish%20Jacket",
+      media: [
+        { type: "image", src: "https://via.placeholder.com/300" },
+        { type: "image", src: "https://via.placeholder.com/300/0000FF" },
+        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+      ],
+    },
+  ];
+  const images = [
+    { type: "image", src: image },
+    { type: "image", src: image },
+    { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+  ];
   return (
     <div
       className="h-[75vh]  overflow-y-scroll px-4 py-2 space-y-6"
@@ -184,11 +188,19 @@ function AllProductsList({ }) {
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {sampleProducts.map((product, index) => (
-          <AllProductsCard
+          //   <AllProductsCard
+          //     key={index}
+          //     media={product.media}
+          //     name={product.name}
+          //     whatsappLink={product.whatsappLink}
+          //   />
+          <StackProducts
             key={index}
-            media={product.media}
-            name={product.name}
-            whatsappLink={product.whatsappLink}
+            randomRotation={true}
+            sensitivity={180}
+            sendToBackOnClick={true}
+            cardDimensions={{ width: 200, height: 200 }}
+            cardsData={images}
           />
         ))}
       </div>
