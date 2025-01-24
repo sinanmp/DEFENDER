@@ -23,7 +23,6 @@ function MainPage() {
 
       {/* <StarBorder as="button" className="custom-class" color="cyan" speed="5s">
       </StarBorder> */}
-
       <Sections activeNav={activeNav} />
     </>
   );
