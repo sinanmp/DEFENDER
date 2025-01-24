@@ -1,4 +1,4 @@
-import productDb from "./model/ProductModel";
+import productDb from "./model/ProductModel.js";
 
 class Controller {
     async addProduct(req,res){
@@ -17,13 +17,12 @@ class Controller {
             } else if(!body.art_number) {
               return res.status(400).json({
                 error : true , 
-                
+
               })
             } else {
                 await productDb.create({
                     productName : body.productName,
-                    art_number : body.art_number ,
-
+                    art_number : body.art_number,
                 })
             }
 

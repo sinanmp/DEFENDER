@@ -7,6 +7,7 @@ const productSchema = new mongoose.Schema({
     art_number : String,
     images : Array,
     video : String 
+    // just like that 
 })
 
 
