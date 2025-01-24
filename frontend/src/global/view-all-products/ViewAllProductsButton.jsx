@@ -20,7 +20,7 @@ function ViewAllProducts({ activeNav, setActiveNav }) {
                 setActiveNav("#allProducts");
               }
             }}
-            className="text-sm text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-700 transition duration-200 shadow-lg flex items-center justify-center border-2 border-white border-opacity-50 hover:border-gray-500"
+            className="text-xs lg:text-sm text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-full font-semibold hover:bg-gray-700 transition duration-200 shadow-lg flex items-center justify-center border-2 border-white border-opacity-50 hover:border-gray-500"
             style={{
               background: "rgba(31, 41, 55, 0.3)", // Semi-transparent background
               backdropFilter: "blur(12px)", // Frosted-glass effect

@@ -128,30 +128,33 @@ function Sections({ activeNav }) {
       )}
 
       {activeNav === "#contact" && (
-        <section id="about" className="h-[70vh] p-10 flex items-center">
-          <div className="flex flex-col md:flex-row justify-center items-center w-full">
+        <section
+          id="about"
+          className="h-auto lg:h-[85vh] p-5 lg:p-10 flex items-center"
+        >
+          <div className="flex flex-col lg:flex-row justify-center items-center w-full space-y-8 lg:space-y-0 ">
             {/* Left Column: Mission & Vision */}
             <div
-              className="flex-1 max-w-md mx-auto p-8 rounded-lg shadow-lg text-white "
+              className="flex-1 max-w-lg max-h-full md:max-w-2xl lg:max-w-xs xl:max-w-lg mx-auto p-6 md:p-8 rounded-lg shadow-lg text-white"
               style={{
                 background: "rgba(31, 41, 55, 0.2)", // Semi-transparent background
                 backdropFilter: "blur(12px)", // Frosted-glass effect
                 WebkitBackdropFilter: "blur(12px)", // Safari support
               }}
             >
-              <h3 className="text-md lg:text-2xl font-semibold mb-4 text-center">
+              <h3 className="text-lg  lg:text-2xl font-semibold mb-4 text-center">
                 Our Mission
               </h3>
-              <p className="mb-4 text-justify text-xs lg:text-lg">
+              <p className="mb-4 text-justify text-sm lg:text-lg">
                 At Defender, our mission is to redefine the way you think about
                 fashion. We believe in creating stylish, durable, and
                 comfortable products that not only enhance your wardrobe but
                 empower your lifestyle.
               </p>
-              <h3 className="text-md lg:text-2xl font-semibold mb-4 text-center">
+              <h3 className="text-lg lg:text-2xl font-semibold mb-4 text-center">
                 Our Vision
               </h3>
-              <p className="text-justify text-xs lg:text-lg">
+              <p className="text-justify text-sm  lg:text-lg">
                 To become a global leader in fashionable yet durable clothing
                 that enables individuals to express their unique style, while
                 always prioritizing comfort and performance.
@@ -160,16 +163,18 @@ function Sections({ activeNav }) {
 
             {/* Right Column: Values */}
             <div
-              className="flex-1 max-w-md mx-auto  p-8 rounded-lg shadow-lg text-white"
+              className="flex-1 max-w-lg  md:max-w-2xl lg:max-w-lg xl:max-w-xl mx-auto p-6 lg:p-8 rounded-lg shadow-lg text-white"
               style={{
                 background: "rgba(31, 41, 55, 0.2)", // Semi-transparent background
                 backdropFilter: "blur(12px)", // Frosted-glass effect
                 WebkitBackdropFilter: "blur(12px)", // Safari support
               }}
             >
-              <h3 className="text-md lg:text-2xl font-semibold mb-4 text-center">Our Values</h3>
-              <ul className="list-disc pl-5 space-y-2 text-justify mb-4 text-xs lg:text-lg">
-                <li >
+              <h3 className="text-lg lg:text-2xl font-semibold mb-4 text-center">
+                Our Values
+              </h3>
+              <ul className="list-disc pl-5 space-y-2 text-justify mb-4 text-sm  lg:text-lg">
+                <li>
                   <strong>Quality:</strong> Premium materials and craftsmanship
                   to ensure lasting durability.
                 </li>
@@ -177,31 +182,31 @@ function Sections({ activeNav }) {
                   <strong>Sustainability:</strong> We aim to minimize our
                   environmental footprint with eco-friendly practices.
                 </li>
-                <li>
+                <li className="hidden lg:block">
                   <strong>Customer-Centricity:</strong> Our customers are at the
                   heart of everything we do, ensuring satisfaction in every
                   interaction.
                 </li>
               </ul>
-              <h3 className="text-md lg:text-2xl font-semibold mb-3 text-center">Our Office</h3>
-              <div className=" text-xs text-justify">
-              <p className="mb-2 ">
-                Feel free to reach out to us via the following methods:
-              </p>
-              <ul className="list-none">
-                <li className="mb-2 flex gap-5">
-                  <div><strong>Email:</strong> support@defender.com</div>
-                  <div><strong>Phone:</strong> +1 (800) 123-4567</div>
-                </li>
-                <li className="mb-2 hidden lg:block">
-                  <strong>Phone:</strong> +1 (800) 123-4567
-                </li>
-                <li className="mb-2">
-                  <strong>Address:</strong> 123 Fashion Street, New York, NY,
-                  10001
-                </li>
-              </ul>
-
+              <h3 className="text-lg  lg:text-2xl font-semibold mb-3 text-center">
+                Our Office
+              </h3>
+              <div className="text-sm lg:text-lg text-justify">
+                <p className="mb-2">
+                  Feel free to reach out to us via the following methods:
+                </p>
+                <ul className="list-none">
+                  <li className="mb-2">
+                    <strong>Email:</strong> support@defender.com
+                  </li>
+                  <li className="mb-2">
+                    <strong>Phone:</strong> +1 (800) 123-4567
+                  </li>
+                  <li className="mb-2">
+                    <strong>Address:</strong> 123 Fashion Street, New York, NY,
+                    10001
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

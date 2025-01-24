@@ -15,7 +15,7 @@ function ProductsList({ sampleProducts }) {
         setNumProducts(6); // For medium screens (md)
 
       } else if(width >=476){
-        setNumProducts(2)
+        setNumProducts(4)
       } 
       
       else {
@@ -44,7 +44,7 @@ function ProductsList({ sampleProducts }) {
         msOverflowStyle: "none", // For IE and Edge
       }}
     >
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {productsToDisplay.map((product, index) => (
           <StackProducts
             key={index}
