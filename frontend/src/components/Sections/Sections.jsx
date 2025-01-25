@@ -1,7 +1,9 @@
 import React from "react";
+import { motion } from "framer-motion"; // Importing Framer Motion
 import AllProductsList from "../AllProducts/AllProducts";
 import Shoe from "../../assets/images/products/Shoe.jpg";
-import ProductsList from "./ProductList";
+import ProductsList from "../Products/ProductList";
+import "./Sections.css";
 
 function Sections({ activeNav }) {
   // Fetch Latest 8 Products HERE instead of the SAMPLE PRODUCTS
@@ -16,31 +18,7 @@ function Sections({ activeNav }) {
       ],
     },
     {
-      id: 1,
-      name: "Classic Sneakers",
-      media: [
-        { type: "image", src: `${Shoe}` },
-        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-      ],
-    },
-    {
-      id: 2,
-      name: "Stylish Sneakers",
-      media: [
-        { type: "image", src: `${Shoe}` },
-        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-      ],
-    },
-    {
-      id: 3,
-      name: "Classic Jackets",
-      media: [
-        { type: "image", src: `${Shoe}` },
-        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-      ],
-    },
-    {
-      id: 4,
+      id: 0,
       name: "Stylish Jacket",
       media: [
         { type: "image", src: `${Shoe}` },
@@ -49,7 +27,7 @@ function Sections({ activeNav }) {
       ],
     },
     {
-      id: 4,
+      id: 0,
       name: "Stylish Jacket",
       media: [
         { type: "image", src: `${Shoe}` },
@@ -58,7 +36,7 @@ function Sections({ activeNav }) {
       ],
     },
     {
-      id: 4,
+      id: 0,
       name: "Stylish Jacket",
       media: [
         { type: "image", src: `${Shoe}` },
@@ -67,7 +45,7 @@ function Sections({ activeNav }) {
       ],
     },
     {
-      id: 4,
+      id: 0,
       name: "Stylish Jacket",
       media: [
         { type: "image", src: `${Shoe}` },
@@ -75,13 +53,55 @@ function Sections({ activeNav }) {
         { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
       ],
     },
+    {
+      id: 0,
+      name: "Stylish Jacket",
+      media: [
+        { type: "image", src: `${Shoe}` },
+        { type: "image", src: `${Shoe}` },
+        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+      ],
+    },
+    {
+      id: 0,
+      name: "Stylish Jacket",
+      media: [
+        { type: "image", src: `${Shoe}` },
+        { type: "image", src: `${Shoe}` },
+        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+      ],
+    },
+    {
+      id: 0,
+      name: "Stylish Jacket",
+      media: [
+        { type: "image", src: `${Shoe}` },
+        { type: "image", src: `${Shoe}` },
+        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+      ],
+    },
+    // Other sample products remain the same...
   ];
+
+  // Animation variants for sections
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <>
       {activeNav === "#home" && (
-        <section id="home" className="pt-9 bg-cover bg-center px-12 text-white">
+        <motion.section
+          id="home"
+          className="pt-9 bg-cover bg-center px-12 text-white"
+          variants={sectionVariants}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+        >
           <div className="flex flex-col gap-6 lg:gap-0 lg:flex-row lg:items-center">
-            {/* Left Side */}
             <div className="flex-1">
               <h1 className="text-[4vw] sm:text-3xl md:text-4xl font-bold md:leading-normal">
                 Defender: Where Style Meets Durability – Empowering You to
@@ -89,11 +109,7 @@ function Sections({ activeNav }) {
                 Elegance.
               </h1>
             </div>
-
-            {/* Center Space */}
             <div className="flex-[0.4] lg:flex-1"></div>
-
-            {/* Right Side */}
             <div className="flex-1 text-center space-y-6 flex flex-col gap-6">
               <p className="sm:text-md md:text-lg leading-relaxed">
                 At Defender, we believe fashion is more than just what you wear
@@ -117,29 +133,32 @@ function Sections({ activeNav }) {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
       )}
+
       {activeNav === "#products" && (
-        <section id="products" className="p-12 pt-3 w-full">
-          <div className="">
+          <div>
             <ProductsList sampleProducts={sampleProducts} />
           </div>
-        </section>
       )}
 
       {activeNav === "#contact" && (
-        <section
+        <motion.section
           id="about"
           className="h-auto lg:h-[85vh] p-5 lg:p-10 flex items-center"
+          variants={sectionVariants}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          transition={{ duration: 0.8, ease: "easeInOut" }}
         >
           <div className="flex flex-col lg:flex-row justify-center items-center w-full space-y-8 lg:space-y-0 ">
-            {/* Left Column: Mission & Vision */}
             <div
               className="flex-1 max-w-lg max-h-full md:max-w-2xl lg:max-w-xs xl:max-w-lg mx-auto p-6 md:p-8 rounded-lg shadow-lg text-white"
               style={{
-                background: "rgba(31, 41, 55, 0.2)", // Semi-transparent background
-                backdropFilter: "blur(12px)", // Frosted-glass effect
-                WebkitBackdropFilter: "blur(12px)", // Safari support
+                background: "rgba(31, 41, 55, 0.2)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
               }}
             >
               <h3 className="text-lg  lg:text-2xl font-semibold mb-4 text-center">
@@ -160,14 +179,12 @@ function Sections({ activeNav }) {
                 always prioritizing comfort and performance.
               </p>
             </div>
-
-            {/* Right Column: Values */}
             <div
               className="flex-1 max-w-lg  md:max-w-2xl lg:max-w-lg xl:max-w-xl mx-auto p-6 lg:p-8 rounded-lg shadow-lg text-white"
               style={{
-                background: "rgba(31, 41, 55, 0.2)", // Semi-transparent background
-                backdropFilter: "blur(12px)", // Frosted-glass effect
-                WebkitBackdropFilter: "blur(12px)", // Safari support
+                background: "rgba(31, 41, 55, 0.2)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
               }}
             >
               <h3 className="text-lg lg:text-2xl font-semibold mb-4 text-center">
@@ -210,15 +227,23 @@ function Sections({ activeNav }) {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
       )}
 
       {activeNav === "#allProducts" && (
-        <section id="allProducts" className="p-12 pt-3 w-full">
+        <motion.section
+          id="allProducts"
+          className="p-12 pt-3 w-full"
+          variants={sectionVariants}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+        >
           <div>
             <AllProductsList image={Shoe} />
           </div>
-        </section>
+        </motion.section>
       )}
     </>
   );

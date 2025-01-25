@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";  // Import motion from framer-motion
 import StackProducts from "./StackProducts";
 
 function ProductsList({ sampleProducts }) {
@@ -13,12 +14,9 @@ function ProductsList({ sampleProducts }) {
         setNumProducts(8); // For large screens (lg) and up
       } else if (width >= 768) {
         setNumProducts(6); // For medium screens (md)
-
-      } else if(width >=476){
-        setNumProducts(4)
-      } 
-      
-      else {
+      } else if(width >=476) {
+        setNumProducts(4); // For smaller screens
+      } else {
         setNumProducts(2); // For extra small screens (xs)
       }
     };
@@ -46,13 +44,22 @@ function ProductsList({ sampleProducts }) {
     >
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {productsToDisplay.map((product, index) => (
-          <StackProducts
+          <motion.div
             key={index}
-            randomRotation={true}
-            sensitivity={180}
-            sendToBackOnClick={true}
-            cardsData={product.media}
-          />
+            initial={{ opacity: 0, y: 20 }}  // Start off-screen and invisible
+            animate={{ opacity: 1, y: 0 }}   // Animate to fully visible and in place
+            transition={{
+              delay: index * 0.1,  // Delay each product based on its index for staggered effect
+              duration: 0.5,  // Duration of each animation
+            }}
+          >
+            <StackProducts
+              randomRotation={true}
+              sensitivity={180}
+              sendToBackOnClick={true}
+              cardsData={product.media}
+            />
+          </motion.div>
         ))}
       </div>
     </div>
