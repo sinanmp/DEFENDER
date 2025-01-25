@@ -4,6 +4,7 @@ const router = express.Router()
 
 
 router.post("/addProduct",controller.addProduct)
+router.post("/login",controller.login)
 
 
 export default router
