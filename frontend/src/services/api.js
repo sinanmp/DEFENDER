@@ -31,9 +31,9 @@ async function addProduct(body) {
    } 
 }
 
-async function getProducts() {
+async function getProducts(count) {
     try {
-        const response = await api.get("/getProducts")
+        const response = await api.get(`/getProducts?count=${count ?? 0}`)
         return response.data
        } catch (error) {
         console.log(error)
