@@ -82,6 +82,7 @@ class Controller {
 
     async getAdminProducts(req,res){
         try {
+            console.log(req.query.count)
             if(req.query.count > 0){
                 const data = await productDb.find({isOutStock:false}).limit(req.query.count)
                return res.status(200).json({
