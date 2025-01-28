@@ -36,7 +36,9 @@ function ProductsList() {
   // Fetch products from the backend
   useEffect(() => {
     const fetchProducts = async () => {
+      console.log("trying to fetch")
       try {
+        console.log("before trying to fetch")
         const result = await api.getProducts(); // Fetch products based on numProducts
         console.log("this is data : ",result)
         setProducts(result.data); // Update the products state
