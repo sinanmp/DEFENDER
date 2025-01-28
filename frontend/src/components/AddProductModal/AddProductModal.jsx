@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import Spinner from "../Spinner/Spinner";
 
 const AddProductModal = ({ isOpen, onClose, onSubmit }) => {
     const [productName, setProductName] = useState("");
     const [articleNumber, setArticleNumber] = useState("");
     const [images, setImages] = useState([]);
     const [video, setVideo] = useState(null);
+    const [loading , setLoading ] = useState(false)
 
     const handleImageChange = (e) => {
         const files = Array.from(e.target.files); // Convert FileList to an array
@@ -74,6 +76,7 @@ const AddProductModal = ({ isOpen, onClose, onSubmit }) => {
         const uploadPreset = "react_media_upload"; // Replace with your upload preset
       
         try {
+            setLoading(true)
           // Upload images and save public IDs
           const uploadedImages = await Promise.all(
             images.map(async (image) => {
@@ -121,6 +124,8 @@ const AddProductModal = ({ isOpen, onClose, onSubmit }) => {
         } catch (error) {
           console.error("Error uploading to Cloudinary:", error);
           alert("Failed to upload images or video. Please try again.");
+        } finally {
+            setLoading(false)
         }
       };
       
@@ -128,7 +133,9 @@ const AddProductModal = ({ isOpen, onClose, onSubmit }) => {
     if (!isOpen) return null;
 
     return (
+        <>
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+         {loading &&<Spinner/>}
             <div className="bg-white rounded-2xl shadow-xl w-96 p-6">
                 <h2 className="text-xl font-bold mb-4">Add Product</h2>
                 <form onSubmit={handleSubmit}>
@@ -142,7 +149,7 @@ const AddProductModal = ({ isOpen, onClose, onSubmit }) => {
                             value={productName}
                             onChange={(e) => setProductName(e.target.value)}
                             required
-                        />
+                            />
                     </div>
 
                     {/* Article Number */}
@@ -155,7 +162,7 @@ const AddProductModal = ({ isOpen, onClose, onSubmit }) => {
                             value={articleNumber}
                             onChange={(e) => setArticleNumber(e.target.value)}
                             required
-                        />
+                            />
                     </div>
 
                     {/* Image Upload */}
@@ -168,7 +175,7 @@ const AddProductModal = ({ isOpen, onClose, onSubmit }) => {
                             onChange={handleImageChange}
                             multiple
                             required
-                        />
+                            />
 
                     </div>
 
@@ -181,9 +188,9 @@ const AddProductModal = ({ isOpen, onClose, onSubmit }) => {
                             accept="video/*" // This ensures only video files can be selected
                             onChange={
                                 handleVideoChange
-                                }
+                            }
                             required
-                        />
+                            />
                     </div>
 
                     {/* Buttons */}
@@ -192,19 +199,20 @@ const AddProductModal = ({ isOpen, onClose, onSubmit }) => {
                             type="button"
                             className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300"
                             onClick={onClose}
-                        >
+                            >
                             Cancel
                         </button>
                         <button
                             type="submit"
                             className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-                        >
+                            >
                             Add Product
                         </button>
                     </div>
                 </form>
             </div>
         </div>
+                            </>
     );
 };
 

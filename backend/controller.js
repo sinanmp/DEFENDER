@@ -44,7 +44,7 @@ class Controller {
             } else if(!body.articleNumber) {
               return res.status(400).json({
                 error : true , 
-
+                message:"please eneter article number"
               })
             } else {
                 await productDb.create({
@@ -55,12 +55,45 @@ class Controller {
                     video : body.video
                 })
             }
+            res.status(200).json({
+                error:false,
+                message:"product added successfully"
+            })
 
         } catch (error) {
-            res.status(500).json({
+            console.log(error)
+            res.status(500).json({  
                 error:true ,
                 message : "internel server error"
             })
+        }
+    }
+
+
+    async getAdminProducts(req,res){
+        try {
+            if(req.query.count > 0){
+                const data = await productDb.find().limit(req.query.count)
+               return res.status(200).json({
+                    error:false,
+                    message:"data fetched successfully",
+                    data : data
+                })
+            }else{
+                const data = await productDb.find()
+                 res.status(200).json({
+                     error:false,
+                     message:"data fetched successfully",
+                     data : data
+                 })
+            }
+          
+        } catch (error) {
+            console.log(error)
+            res.status(500).json({
+                error:true ,
+                message:"internel server error"
+            })            
         }
     }
 }

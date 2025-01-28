@@ -7,4 +7,7 @@ router.post("/addProduct",controller.addProduct)
 router.post("/login",controller.login)
 
 
+router.get("/getProducts",controller.getAdminProducts)
+
+
 export default router

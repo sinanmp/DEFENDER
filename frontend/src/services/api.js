@@ -31,9 +31,19 @@ async function addProduct(body) {
    } 
 }
 
+async function getProducts() {
+    try {
+        const response = await api.get("/getProducts")
+        return response.data
+       } catch (error) {
+        console.log(error)
+        return error.response.data   
+       } 
+}
 
 
 export default {
     login, 
-    addProduct
+    addProduct,
+    getProducts
 }
