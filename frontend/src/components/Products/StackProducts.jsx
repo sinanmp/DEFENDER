@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { hover, motion, useMotionValue, useTransform } from "framer-motion";
 import { useState } from "react";
 
 function CardRotate({ children, onSendToBack, sensitivity }) {
@@ -98,7 +98,7 @@ export default function StackProducts({
       )}
 
       <div
-        className="relative z-10 flex justify-center items-center"
+        className="relative z-10 flex justify-center "
         style={{
           perspective: 600,
         }}
@@ -115,7 +115,7 @@ export default function StackProducts({
               sensitivity={sensitivity}
             >
               <motion.div
-                className=" w-[20vw] h-[30vh] rounded-lg overflow-hidden"
+                className="w-[35vw] h-[25vh] sm:w-[30vw] sm:h-[25vh] md:w-[20vw] md:h-[30vh] rounded-lg overflow-hidden"
                 onClick={() =>
                   (!sendToBackOnClick || card.type !== "video") &&
                   sendToBack(index)
@@ -157,27 +157,27 @@ export default function StackProducts({
         className="absolute bottom-0 left-0 w-full bg-gradient-to-r from-gray-500 via-transparent
         to-transparent p-3 text-white z-50"
       >
-        <h3 className="text-md font-bold truncate">Stylish Shoe</h3>
+        <h3 className="text-xs md:text-md font-bold truncate">Stylish Shoe</h3>
       </div>
       {/* Floating WhatsApp Button */}
-      <div className="absolute bottom-2 right-4 z-50 ">
+      <div className="absolute bottom-2 right-3 z-50">
         <a
           //   href={whatsappLink}
           style={{
-            background: "rgba(31, 41, 55, 0.3)", // Semi-transparent background
+            background:"rgba(31, 41, 55, 0.3)",
             backdropFilter: "blur(12px)", // Frosted-glass effect
             WebkitBackdropFilter: "blur(12px)", // Safari support
           }}
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:cursor-pointer flex items-center justify-center gap-1 border-2 border-green-500 text-white px-3 py-2 pb-2.5 rounded-full hover:bg-green-600 transition-colors duration-200 shadow-md"
+          className="hover:cursor-pointer  flex items-center justify-center gap-1 border-2 border-green-500 text-white px-1.5 py-1 md:px-2.5 md:py-1.5 md:pb-2 rounded-full hover:bg-green-600 transition-colors duration-200 shadow-md"
         >
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
             alt="WhatsApp"
-            className="w-4 h-4"
+            className="w-3 h-3 md:w-4 md:h-4"
           />
-          <div className="text-xs font-medium">Order with us</div>
+          <div className="text-[9px] md:text-xs  font-medium">Order with us</div>
         </a>
       </div>
     </div>

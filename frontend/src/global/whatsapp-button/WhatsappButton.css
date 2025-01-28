@@ -1,6 +1,6 @@
 .whatsapp-button {
   position: fixed;
-  bottom: 30px;
+  bottom: 15px;
   right: 2%;
   width: 50px;
   height: 50px;
@@ -65,7 +65,7 @@
 
 .whatsapp-popup {
   position: fixed;
-  bottom: 110px;
+  bottom: 95px;
   right: 2%;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -140,5 +140,43 @@
   to {
     max-width: 100%;
     /* Reveal full text */
+  }
+}
+
+
+/* RESPONSIVENESS */
+
+/* Medium screens (tablets) */
+@media (max-width: 768px) {
+  .whatsapp-button {
+    width: 45px;
+    height: 45px;
+  }
+
+  .whatsapp-icon {
+    font-size: 25px;
+  }
+
+  .whatsapp-popup {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 480px) {
+  .whatsapp-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .whatsapp-icon {
+    font-size: 20px;
+  }
+
+  .whatsapp-popup {
+    font-size: 11px;
+    padding: 6px 10px;
+    bottom: 85px;
   }
 }
