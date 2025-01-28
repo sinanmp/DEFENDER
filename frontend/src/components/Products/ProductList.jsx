@@ -37,9 +37,8 @@ function ProductsList() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const data = await api.getProducts(); // Fetch products based on numProducts
-        console.log(data.length)
-        setProducts(data); // Update the products state
+        const result = await api.getProducts(); // Fetch products based on numProducts
+        setProducts(result.data); // Update the products state
       } catch (error) {
         console.error("Failed to fetch products:", error);
       }
