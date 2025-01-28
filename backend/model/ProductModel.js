@@ -7,7 +7,10 @@ const productSchema = new mongoose.Schema({
     art_number : String,
     images : Array,
     isOutStock: Boolean ,
-    video : String 
+    video: {
+        url: String,
+        publicId: String,
+    },  
     // just like that 
 })
 

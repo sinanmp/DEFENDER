@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import { MdOutlineUpdate } from "react-icons/md";
 import Sidebar from "../components/adminSidebar/Sidebar";
 import AddProductModal from "../components/AddProductModal/AddProductModal";
 import api from "../services/api";
+import Spinner from "../components/Spinner/Spinner";
+import Swal from "sweetalert2";
+
 
 function Dashboard() {
-  const [products, setProducts] = useState([
-    { id: 1, name: "Product 1", status: "In Stock", image: "https://via.placeholder.com/100" },
-    { id: 2, name: "Product 2", status: "Out of Stock", image: "https://via.placeholder.com/100" },
-    { id: 3, name: "Product 3", status: "In Stock", image: "https://via.placeholder.com/100" },
-  ]);
+  const [products, setProducts] = useState([]);
   const [addProductModal , setAddProductModal] = useState(false)
+  const [loading , setLoading] = useState(false)
 
   const handleDelete = (id) => {
     setProducts(products.filter((product) => product.id !== id));
@@ -31,22 +31,63 @@ function Dashboard() {
   };
 
 
+  useEffect(()=>{
+    const getProducts = async()=>{
+        const data = await api.getProducts()
+        if(!data.error){
+            setProducts(data.data)
+        }else{
+            alert("error fetching Products")
+        }
+    }
+    getProducts()
+  },[])
+
+
 
   const handleUpdate = (id) => {
     alert(`Update product with ID: ${id}`);
   };
 
-  const onSubmit = async(productData)=>{
+  const onSubmit = async (productData) => {
     try {
-        const result = await api.addProduct(productData)
-        console.log(result)
+      setLoading(true);
+      const result = await api.addProduct(productData);
+      if (result.error) {
+        // Show error alert
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: result.error.message || "Something went wrong!",
+        });
+      } else {
+        // Show success alert
+        Swal.fire({
+          icon: "success",
+          title: "Product Added",
+          text: "Your product has been added successfully!",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+  
+        console.log(result);
+        setAddProductModal(false);
+      }
     } catch (error) {
-        console.log(error)
+      // Show error alert for exception
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: error.message || "An unexpected error occurred!",
+      });
+      console.log(error);
+    } finally {
+      setLoading(false);
     }
-  }
-
+  };
   return (
     <>
+    {loading && <Spinner/>}
     <AddProductModal isOpen={addProductModal} onClose={()=> setAddProductModal(false)} onSubmit={onSubmit}/>
     <div className="flex">
       {/* Sidebar */}
@@ -81,36 +122,36 @@ function Dashboard() {
             <tbody>
               {products.map((product, index) => (
                   <tr
-                  key={product.id}
+                  key={product._id}
                   className={index % 2 === 0 ? "bg-gray-100" : "bg-gray-200 text-gray-800"}
                   >
-                      <td className="border border-gray-300 px-4 py-2">{product.id}</td>
+                      <td className="border border-gray-300 px-4 py-2">{product.art_number}</td>
                   <td className="border border-gray-300 px-4 py-2">
                     <img
-                      src={product.image}
-                      alt={product.name}
+                      src={product.images[0].url}
+                      alt={product.productName}
                       className="w-16 h-16 object-cover mx-auto rounded-md"
                       />
                   </td>
-                  <td className="border border-gray-300 px-4 py-2">{product.name}</td>
+                  <td className="border border-gray-300 px-4 py-2">{product.productName}</td>
                   <td
                     className={`border border-gray-300 px-4 py-2 ${
-                        product.status === "In Stock" ? "text-green-600" : "text-red-600"
+                        !product.isOutStock ? "text-green-600" : "text-red-600"
                     }`}
                     >
-                    {product.status}
+                    {!product.isOutStock ? 'In Stock': 'out of stock'}
                   </td>
                   <td className="border border-gray-300 px-4 py-2">
                     <div className="flex justify-center space-x-2">
                       <button
-                        onClick={() => toggleStock(product.id)}
+                        onClick={() => toggleStock(product._id)}
                         className="text-yellow-500 hover:text-yellow-600"
                         title="Toggle Stock"
                         >
                         <MdOutlineUpdate size={20} />
                       </button>
                       <button
-                        onClick={() => handleUpdate(product.id)}
+                        onClick={() => handleUpdate(product._id)}
                         className="text-blue-500 hover:text-blue-600"
                         title="Update"
                         >
