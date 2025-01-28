@@ -1,9 +1,9 @@
-// LayoutRoutes.js
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import MainPage from "../pages/MainPage";
 import AllProductsList from "../components/AllProducts/AllProducts";
 import AdminLayoutRoutes from "./AdminLayoutRoutes";
+import NotFound from "../components/NotFound/NotFound";  // Make sure you import the NotFound component
 
 function LayoutRoutes() {
   return (
@@ -15,6 +15,9 @@ function LayoutRoutes() {
 
         {/* Admin Side Routes */}
         <Route path="/admin/*" element={<AdminLayoutRoutes />} />
+        
+        {/* Catch-All Route for 404 */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
