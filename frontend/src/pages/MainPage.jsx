@@ -46,6 +46,8 @@ function MainPage() {
       <Header activeNav={activeNav} setActiveNav={setActiveNav} />
       <WhatsAppButton />
       <ViewAllProducts activeNav={activeNav} setActiveNav={setActiveNav} />
+      {/* <StarBorder as="button" className="custom-class" color="cyan" speed="5s">
+      </StarBorder> */}
       <Sections activeNav={activeNav} />
     </>
   );

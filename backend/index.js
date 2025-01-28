@@ -1,13 +1,14 @@
 import express from 'express'
 import cors from 'cors'
 import 'dotenv/config'
-
+import router from './router.js'
+import connectDb from './database/connection.js'
 const app = express()
 
 
 
 const corsOptions = {
-    origin: '', // Specific frontend origin
+    origin: 'http://localhost:5173', // Specific frontend origin
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true, 
@@ -23,7 +24,8 @@ app.use(express.json());
 
 
 app.use(express.urlencoded({ extended: true }));
-
+ 
+connectDb()
 
 app.get("/", async (req, res) => {
     try {
@@ -33,6 +35,9 @@ app.get("/", async (req, res) => {
         res.status(500).json({ error: "Initialization error" });
     }
 });
+
+app.use("/api",router)
+
 
 
 const port = process.env.PORT || 3000;
