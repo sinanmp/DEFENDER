@@ -42,8 +42,20 @@ async function getProducts() {
 }
 
 
+async function deleteProduct(id) {
+    try {
+        const response = await api.delete(`/deleteProduct?id=${id}`)
+        return response.data
+       } catch (error) {
+        console.log(error)
+        return error.response.data   
+       } 
+}
+
+
 export default {
     login, 
     addProduct,
-    getProducts
+    getProducts,
+    deleteProduct
 }

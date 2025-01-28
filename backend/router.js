@@ -10,4 +10,7 @@ router.post("/login",controller.login)
 router.get("/getProducts",controller.getAdminProducts)
 
 
+// router.delete("/deleteProduct",controller.deleteProduct)
+
+
 export default router
