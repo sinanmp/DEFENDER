@@ -1,33 +1,185 @@
-.nav-link {
-    text-decoration: none;
-    color: #000;
+/* Base Navbar Styles */
+.nav {
+  display: none;
+  /* Default to hidden (for mobile, toggled by the hamburger) */
+  gap: 3vw;
+}
+
+/* Hamburger Bars */
+.hamburger-bar {
+  width: 100%;
+  /* Full width of the hamburger button */
+  height: 3px;
+  /* Thickness of each bar */
+  background-color: #000;
+  /* Black color for visibility */
+  border-radius: 2px;
+  /* Slightly rounded corners */
+  transition: all 0.3s ease;
+  /* Smooth transition for animations */
+}
+
+/* Open State Animation */
+.hamburger-bar.open:nth-child(1) {
+  transform: rotate(45deg);
+  position: absolute;
+  top: 50%;
+}
+
+.hamburger-bar.open:nth-child(2) {
+  opacity: 0;
+  /* Hide the middle bar */
+}
+
+.hamburger-bar.open:nth-child(3) {
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 50%;
+}
+
+/* Horizontal Navbar for Larger Screens */
+@media (min-width: 1025px) {
+  .nav {
+    display: flex;
+    /* Show the nav links horizontally */
+    position: static;
+    /* Remove absolute positioning */
+    background: none;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .nav-link {
     font-size: 16px;
-    transition: all 0.3s ease;
-    position: relative;
+    padding: 0;
+    border: none;
   }
-  
-  .nav-link:hover {
-    color: rgb(153, 5, 47);
+
+  .nav-link.active {
+    border-bottom: 2px solid rgb(153, 5, 47);
+    /* Keep the active indicator */
+    font-weight: bold;
   }
-  
-  .nav-link::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 0;
-    height: 2px;
-    background-color: rgb(153, 5, 47);
-    transition: width 0.3s ease;
+}
+
+/* Mobile Hamburger Menu */
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 9999;
+}
+
+@media (min-width: 768px) {
+  .hamburger-menu {
+    display: none;
+    /* Hide hamburger menu on larger screens */
   }
-  
-  .nav-link:hover::after {
-    width: 100%;
+}
+
+/* Dropdown Mobile Menu */
+.nav.open {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Align items in a column */
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  background-color: white;
+  text-align: center;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  animation: slide-in 0.3s ease-out forwards;
+  z-index: 9999;
+  gap: 10px; /* Add space between menu items */
+}
+
+/* Slide-in Animation for Mobile Menu */
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
   }
-  
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Mobile Links Styling */
+.nav-link {
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  padding: 10px;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: rgb(153, 5, 47);
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: rgb(153, 5, 47);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: rgb(153, 5, 47);
+  font-weight: bold;
+  border-bottom: 2px solid rgb(153, 5, 47);
+}
+
+/* Responsive Styling for Mobile Screens */
+@media (max-width: 1024px) {
+  .nav {
+    display: none;
+    /* Default hidden for mobile */
+  }
+
+  .nav.open {
+    display: flex; /* Show when open */
+    flex-direction: column; /* Vertical alignment */
+  }
+  .nav-link {
+    font-size: 18px;
+    padding: 10px;
+    font-size: 18px;
+  }
   .nav-link.active {
     color: rgb(153, 5, 47);
     font-weight: bold;
     border-bottom: 2px solid rgb(153, 5, 47);
+    border: none;
   }
-  
+  .nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 25%;
+    bottom: -2px;
+    width: 50%;  /* Set the width to a percentage of the link */
+    height: 2px;
+    
+    background-color: rgb(153, 5, 47);
+    transition: width 0.3s ease; /* Smooth transition */
+  }
+}
+
