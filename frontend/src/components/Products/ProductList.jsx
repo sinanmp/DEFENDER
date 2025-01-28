@@ -40,7 +40,7 @@ function ProductsList() {
       try {
         console.log("before trying to fetch")
         const result = await api.getProducts(); // Fetch products based on numProducts
-        console.log("after trying to fetch")
+        console.log("this is data : ",result)
         setProducts(result.data); // Update the products state
       } catch (error) {
         console.error("Failed to fetch products:", error);
