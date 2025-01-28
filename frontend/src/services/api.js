@@ -53,9 +53,21 @@ async function deleteProduct(id) {
 }
 
 
+async function toggleStock(id) {
+    try {
+        const response = await api.put(`/toggleStock?id=${id}`)
+        return response.data
+       } catch (error) {
+        console.log(error)
+        return error.response.data 
+       } 
+}
+
+
 export default {
     login, 
     addProduct,
     getProducts,
-    deleteProduct
+    deleteProduct,
+    toggleStock
 }

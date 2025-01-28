@@ -1,10 +1,20 @@
 import productDb from "./model/ProductModel.js";
+import { v2 as cloudinary } from 'cloudinary';
+
+// Cloudinary configuration
+cloudinary.config({
+  cloud_name: 'dvrvmosez',
+  api_key: '294223518693917',
+  api_secret: 'hqZ-nmWE9UlTWB-CAwaQYMSA7Eg',
+});
+
 
 class Controller {
 
     async  login(req,res) {
         try {
             const {email , password} = req.body
+            console.log('request gotted', req.body)
             if(email==process.env.ADMIN_USERNAME && password == process.env.ADMIN_PASS){
                 return res.status(200).json({
                     error:false,
@@ -73,7 +83,7 @@ class Controller {
     async getAdminProducts(req,res){
         try {
             if(req.query.count > 0){
-                const data = await productDb.find().limit(req.query.count)
+                const data = await productDb.find({isOutStock:false}).limit(req.query.count)
                return res.status(200).json({
                     error:false,
                     message:"data fetched successfully",
@@ -96,7 +106,61 @@ class Controller {
             })            
         }
     }
-    
+
+
+    async deleteProduct(req,res){
+        try {
+            const id = req.query.id
+            const product = await productDb.findOne({_id:id})
+            if (!product) {
+                return res.status(404).json({error:true, message: "Product not found" });
+              }
+
+              if (product.images && product.images.length > 0) {
+                for (const image of product.images) {
+                  await cloudinary.uploader.destroy(image.publicId);
+                }
+              }
+
+              if (product.video && product.video.publicId) {
+                await cloudinary.uploader.destroy(product.video.publicId, { resource_type: "video" });
+              }
+
+              await productDb.deleteOne({ _id: id });
+              return res.status(200).json({error:false, message: "Product and its media have been deleted successfully." });
+            } catch (error) {
+              console.error("Error deleting product:", error);
+              return res.status(500).json({error:true, message: "An error occurred while deleting the product." });
+            }
+          }
+          async toggleStock(req, res) {
+            try {
+                const id = req.query.id;
+        
+                // Find the product by ID
+                const product = await productDb.findById(id);
+        
+                if (!product) {
+                    return res.status(404).json({error:true , message: "Product not found" });
+                }
+        
+                // Toggle the isOutStock property
+                const updatedProduct = await productDb.findByIdAndUpdate(
+                    id,
+                    { isOutStock: !product.isOutStock }
+                );
+        
+                res.status(200).json({
+                    error:false,
+                    message: `Product stock status updated to ${updatedProduct.isOutStock ? 'Out of Stock' : 'In Stock'}`,
+                    product: updatedProduct
+                });
+            } catch (error) {
+                console.error(error);
+                res.status(500).json({error:true, message: "An error occurred while toggling stock status" });
+            }
+        }
+        
 }
 
 
