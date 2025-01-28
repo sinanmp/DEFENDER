@@ -38,6 +38,7 @@ function ProductsList() {
     const fetchProducts = async () => {
       try {
         const result = await api.getProducts(); // Fetch products based on numProducts
+        console.log("this is data : ",result)
         setProducts(result.data); // Update the products state
       } catch (error) {
         console.error("Failed to fetch products:", error);
