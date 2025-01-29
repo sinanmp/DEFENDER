@@ -104,7 +104,7 @@ function Sections({ activeNav }) {
                 WebkitBackdropFilter: "blur(12px)",
               }}
             >
-              <h3 className="text-lg  lg:text-2xl font-semibold mb-4 text-center">
+              <h3 className="text-lg  lg:text-2xl font-semibold mb-3 lg:mb-4 text-center">
                 Our Mission
               </h3>
               <p className="mb-4 text-justify text-sm lg:text-lg">
@@ -113,7 +113,7 @@ function Sections({ activeNav }) {
                 comfortable products that not only enhance your wardrobe but
                 empower your lifestyle.
               </p>
-              <h3 className="text-lg lg:text-2xl font-semibold mb-4 text-center">
+              <h3 className="text-lg lg:text-2xl font-semibold mb-3 lg:mb-4 text-center">
                 Our Vision
               </h3>
               <p className="text-justify text-sm  lg:text-lg">
@@ -130,10 +130,10 @@ function Sections({ activeNav }) {
                 WebkitBackdropFilter: "blur(12px)",
               }}
             >
-              <h3 className="text-lg lg:text-2xl font-semibold mb-4 text-center">
+              <h3 className="text-lg lg:text-2xl font-semibold mb-3 lg:mb-4 text-center">
                 Our Values
               </h3>
-              <ul className="list-disc pl-5 space-y-2 text-justify mb-4 text-sm  lg:text-lg">
+              <ul className="list-disc pl-5 space-y-2 text-justify mb-3 lg:mb-4 text-sm  lg:text-lg">
                 <li>
                   <strong>Quality:</strong> Premium materials and craftsmanship
                   to ensure lasting durability.
