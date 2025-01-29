@@ -55,23 +55,29 @@ function ProductsList() {
         msOverflowStyle: "none", // For IE and Edge
       }}
     >
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-        {products.map((product, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }} // Start off-screen and invisible
-            animate={{ opacity: 1, y: 0 }} // Animate to fully visible and in place
-            transition={{
-              delay: index * 0.1, // Delay each product based on its index for staggered effect
-              duration: 0.5, // Duration of each animation
-            }}
-          >
-            <CarouselProduct
-              cardData={product} // Pass the product to CarouselProduct
-            />
-          </motion.div>
-        ))}
-      </div>
+      {products.length === 0 ? (
+        <div className="text-center text-xl text-gray-600">
+          <p>No products available at the moment.</p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          {products.map((product, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }} // Start off-screen and invisible
+              animate={{ opacity: 1, y: 0 }} // Animate to fully visible and in place
+              transition={{
+                delay: index * 0.1, // Delay each product based on its index for staggered effect
+                duration: 0.5, // Duration of each animation
+              }}
+            >
+              <CarouselProduct
+                cardData={product} // Pass the product to CarouselProduct
+              />
+            </motion.div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
