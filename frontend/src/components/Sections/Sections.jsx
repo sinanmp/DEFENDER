@@ -4,85 +4,28 @@ import AllProductsList from "../AllProducts/AllProducts";
 import Shoe from "../../assets/images/products/Shoe.jpg";
 import ProductsList from "../Products/ProductList";
 import "./Sections.css";
+import { useEffect } from "react";
+
 
 function Sections({ activeNav }) {
-  // Fetch Latest 8 Products HERE instead of the SAMPLE PRODUCTS
-  const sampleProducts = [
-    {
-      id: 0,
-      name: "Stylish Jacket",
-      media: [
-        { type: "image", src: `${Shoe}` },
-        { type: "image", src: `${Shoe}` },
-        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-      ],
-    },
-    {
-      id: 0,
-      name: "Stylish Jacket",
-      media: [
-        { type: "image", src: `${Shoe}` },
-        { type: "image", src: `${Shoe}` },
-        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-      ],
-    },
-    {
-      id: 0,
-      name: "Stylish Jacket",
-      media: [
-        { type: "image", src: `${Shoe}` },
-        { type: "image", src: `${Shoe}` },
-        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-      ],
-    },
-    {
-      id: 0,
-      name: "Stylish Jacket",
-      media: [
-        { type: "image", src: `${Shoe}` },
-        { type: "image", src: `${Shoe}` },
-        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-      ],
-    },
-    {
-      id: 0,
-      name: "Stylish Jacket",
-      media: [
-        { type: "image", src: `${Shoe}` },
-        { type: "image", src: `${Shoe}` },
-        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-      ],
-    },
-    {
-      id: 0,
-      name: "Stylish Jacket",
-      media: [
-        { type: "image", src: `${Shoe}` },
-        { type: "image", src: `${Shoe}` },
-        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-      ],
-    },
-    {
-      id: 0,
-      name: "Stylish Jacket",
-      media: [
-        { type: "image", src: `${Shoe}` },
-        { type: "image", src: `${Shoe}` },
-        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-      ],
-    },
-    {
-      id: 0,
-      name: "Stylish Jacket",
-      media: [
-        { type: "image", src: `${Shoe}` },
-        { type: "image", src: `${Shoe}` },
-        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-      ],
-    },
-    // Other sample products remain the same...
-  ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = document.querySelectorAll("section");
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+          // This section is in view, update the activeNav
+          setActiveNav(`#${section.id}`);
+        }
+      });
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   // Animation variants for sections
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -138,7 +81,7 @@ function Sections({ activeNav }) {
 
       {activeNav === "#products" && (
           <div>
-            <ProductsList sampleProducts={sampleProducts} />
+            <ProductsList/>
           </div>
       )}
 
@@ -241,7 +184,7 @@ function Sections({ activeNav }) {
           transition={{ duration: 0.8, ease: "easeInOut" }}
         >
           <div>
-            <AllProductsList image={Shoe} />
+            <AllProductsList/>
           </div>
         </motion.section>
       )}

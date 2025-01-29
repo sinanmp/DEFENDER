@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import StackProducts from "./StackProducts";
 import api from "../../services/api";
+import CarouselProduct from "./CarouselProduct";
 
 function ProductsList() {
   const [products, setProducts] = useState([]); // Holds products fetched from the backend
@@ -36,11 +36,8 @@ function ProductsList() {
   // Fetch products from the backend
   useEffect(() => {
     const fetchProducts = async () => {
-      console.log("trying to fetch")
       try {
-        console.log("before trying to fetch")
         const result = await api.getProducts(); // Fetch products based on numProducts
-        console.log("this is data : ",result)
         setProducts(result.data); // Update the products state
       } catch (error) {
         console.error("Failed to fetch products:", error);
@@ -58,7 +55,7 @@ function ProductsList() {
         msOverflowStyle: "none", // For IE and Edge
       }}
     >
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
         {products.map((product, index) => (
           <motion.div
             key={index}
@@ -69,11 +66,8 @@ function ProductsList() {
               duration: 0.5, // Duration of each animation
             }}
           >
-            <StackProducts
-              randomRotation={true}
-              sensitivity={180}
-              sendToBackOnClick={true}
-              cardsData={product.media}
+            <CarouselProduct
+              cardData={product} // Pass the product to CarouselProduct
             />
           </motion.div>
         ))}

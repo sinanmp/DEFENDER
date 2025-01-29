@@ -104,6 +104,7 @@ class Controller {
             }
           
         } catch (error) {
+            console.log("lajd")
             console.log(error)
             res.status(500).json({
                 error:true ,
