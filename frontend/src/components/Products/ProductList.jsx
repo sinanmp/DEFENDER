@@ -6,6 +6,7 @@ import CarouselProduct from "./CarouselProduct";
 function ProductsList() {
   const [products, setProducts] = useState([]); // Holds products fetched from the backend
   const [numProducts, setNumProducts] = useState(4); // Default number of products to display
+  const [loading, setLoading] = useState(true); // Loading state
 
   // Adjust number of products based on screen size
   useEffect(() => {
@@ -37,19 +38,30 @@ function ProductsList() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        setLoading(true); // Set loading to true before fetching
         const result = await api.getProducts(); // Fetch products based on numProducts
         setProducts(result.data); // Update the products state
       } catch (error) {
         console.error("Failed to fetch products:", error);
+      } finally {
+        setLoading(false); // Set loading to false after fetching
       }
     };
 
     fetchProducts();
   }, [numProducts]); // Refetch products whenever numProducts changes
 
+  if (loading) {
+    return (
+      <div className="h-[75vh] flex justify-center items-center">
+        <p className="text-xl text-gray-600">Loading products...</p>
+      </div>
+    );
+  }
+
   return (
     <div
-      className="h-[75vh] px-4 py-2 space-y-6"
+      className="lg:h-[75vh] px-4 py-2 space-y-6"
       style={{
         scrollbarWidth: "none", // For Firefox
         msOverflowStyle: "none", // For IE and Edge

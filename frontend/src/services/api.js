@@ -1,12 +1,19 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL:"http://localhost:3001/api",
+    baseURL:"https://defender-api-roan.vercel.app/",
     headers:{
         "Content-Type": "application/json",
     },
     withCredentials: true
 })
+// const api = axios.create({
+//     baseURL:"http://localhost:3001/api",
+//     headers:{
+//         "Content-Type": "application/json",
+//     },
+//     withCredentials: true
+// })
 
 async function login(body) {
     try {

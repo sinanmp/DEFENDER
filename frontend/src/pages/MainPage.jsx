@@ -8,9 +8,33 @@ function MainPage() {
   const [activeNav, setActiveNav] = useState("#home");
   const sectionsOrder = ["#home", "#products", "#contact"];
   const [isScrolling, setIsScrolling] = useState(false);
+  const [isLgScreen, setIsLgScreen] = useState(false); // To track screen size
 
   useEffect(() => {
-    const handleScroll = (event) => {
+    // Function to update screen size state
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) { // 1024px is the default breakpoint for 'lg' in Tailwind
+        setIsLgScreen(true);
+      } else {
+        setIsLgScreen(false);
+      }
+    };
+
+    // Initial check on mount
+    handleResize();
+    
+    // Attach the resize event listener
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isLgScreen) return; // Only enable scroll behavior for large screens
+
+    const handleWheelScroll = (event) => {
       if (isScrolling) return; // Prevent rapid state updates during a single scroll
 
       // Only proceed if the current activeNav is in the sectionsOrder
@@ -33,22 +57,23 @@ function MainPage() {
         setIsScrolling(false);
       }, 800); // Adjust delay to match the duration of the scroll transition
     };
-
-    window.addEventListener("wheel", handleScroll);
+    if (isLgScreen) {
+      window.addEventListener("wheel", handleWheelScroll);
+    }
 
     return () => {
-      window.removeEventListener("wheel", handleScroll);
+      if (isLgScreen) {
+        window.removeEventListener("wheel", handleWheelScroll);
+      }
     };
-  }, [activeNav, isScrolling, sectionsOrder]);
+  }, [activeNav, isScrolling, isLgScreen, sectionsOrder]);
 
   return (
     <>
       <Header activeNav={activeNav} setActiveNav={setActiveNav} />
       <WhatsAppButton />
       <ViewAllProducts activeNav={activeNav} setActiveNav={setActiveNav} />
-      {/* <StarBorder as="button" className="custom-class" color="cyan" speed="5s">
-      </StarBorder> */}
-      <Sections activeNav={activeNav} />
+      <Sections activeNav={activeNav} setActiveNav={setActiveNav} />
     </>
   );
 }
