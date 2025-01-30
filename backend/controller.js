@@ -82,7 +82,7 @@ class Controller {
 
     async getAdminProducts(req,res){
 
-        console.log('hello')
+        console.log('on the backend before fetching')
         try {
             console.log(req.query.count)
             if(req.query.count > 0){
@@ -93,9 +93,8 @@ class Controller {
                     data : data
                 })
             }else{
-                console.log('hello')
+                console.log('on the else case of backend before fetchig')
                 const data = await productDb.find()
-                console.log('hello after')
                  res.status(200).json({
                      error:false,
                      message:"data fetched successfully",
@@ -104,7 +103,6 @@ class Controller {
             }
           
         } catch (error) {
-            console.log("lajd")
             console.log(error)
             res.status(500).json({
                 error:true ,

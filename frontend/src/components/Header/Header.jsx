@@ -16,10 +16,18 @@ function Header({ activeNav, setActiveNav }) {
   };
 
   return (
-    <header className="flex justify-between items-center px-[6vw] h-auto">
+    <header className="fixed lg:static flex justify-between items-center px-[6vw] w-full h-auto z-50">
       <div className="flex flex-col items-center pt-[1.5vw] md:pt-[0.4vw]">
-        <img className="h-[4.5vw] lg:h-[2.5vw] lg:pt-[0.5vw]" src={logo} alt="Logo" />
-        <img className="h-[7vw] lg:h-[3vw] w-auto" src={logoText} alt="Logo Text" />
+        <img
+          className="h-[4.5vw] lg:h-[2.5vw] lg:pt-[0.5vw]"
+          src={logo}
+          alt="Logo"
+        />
+        <img
+          className="h-[7vw] lg:h-[3vw] w-auto"
+          src={logoText}
+          alt="Logo Text"
+        />
       </div>
 
       {/* Hamburger Menu for Mobile */}
@@ -46,7 +54,11 @@ function Header({ activeNav, setActiveNav }) {
         </a>
         <a
           href="#products"
-          className={`nav-link ${activeNav === "#products" || activeNav === "#allProducts" ? "active" : ""}`}
+          className={`nav-link ${
+            activeNav === "#products" || activeNav === "#allProducts"
+              ? "active"
+              : ""
+          }`}
           onClick={() => handleNavClick("#products")}
         >
           Products
@@ -62,6 +74,5 @@ function Header({ activeNav, setActiveNav }) {
     </header>
   );
 }
-
 
 export default Header;
