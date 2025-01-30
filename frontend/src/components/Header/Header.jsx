@@ -17,7 +17,7 @@ function Header({ activeNav, setActiveNav }) {
 
   return (
     <header className="flex justify-between items-center px-[6vw] h-auto">
-      <div className="flex flex-col items-center pt-[1.5vw]">
+      <div className="flex flex-col items-center pt-[1.5vw] md:pt-[0.4vw]">
         <img className="h-[4.5vw] lg:h-[2.5vw] lg:pt-[0.5vw]" src={logo} alt="Logo" />
         <img className="h-[7vw] lg:h-[3vw] w-auto" src={logoText} alt="Logo Text" />
       </div>

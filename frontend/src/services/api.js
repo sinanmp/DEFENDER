@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL:"http://localhost:3000/api",
+    baseURL:"http://localhost:3001/api",
     headers:{
         "Content-Type": "application/json",
     },
@@ -33,9 +33,11 @@ async function addProduct(body) {
 
 async function getProducts(count) {
     try {
+        
         const response = await api.get(`/getProducts?count=${count ?? 0}`)
         return response.data
        } catch (error) {
+
         console.log(error)
         return error.response.data   
        } 

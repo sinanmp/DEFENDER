@@ -10,7 +10,7 @@ function LayoutRoutes() {
     <Router>
       <Routes>
         {/* User Side Routes */}
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={<MainPage />} />   
         <Route path="/all-products" element={<AllProductsList />} />
 
         {/* Admin Side Routes */}

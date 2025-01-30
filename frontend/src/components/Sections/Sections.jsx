@@ -4,85 +4,26 @@ import AllProductsList from "../AllProducts/AllProducts";
 import Shoe from "../../assets/images/products/Shoe.jpg";
 import ProductsList from "../Products/ProductList";
 import "./Sections.css";
+import { useEffect } from "react";
 
 function Sections({ activeNav }) {
-  // Fetch Latest 8 Products HERE instead of the SAMPLE PRODUCTS
-  const sampleProducts = [
-    {
-      id: 0,
-      name: "Stylish Jacket",
-      media: [
-        { type: "image", src: `${Shoe}` },
-        { type: "image", src: `${Shoe}` },
-        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-      ],
-    },
-    {
-      id: 0,
-      name: "Stylish Jacket",
-      media: [
-        { type: "image", src: `${Shoe}` },
-        { type: "image", src: `${Shoe}` },
-        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-      ],
-    },
-    {
-      id: 0,
-      name: "Stylish Jacket",
-      media: [
-        { type: "image", src: `${Shoe}` },
-        { type: "image", src: `${Shoe}` },
-        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-      ],
-    },
-    {
-      id: 0,
-      name: "Stylish Jacket",
-      media: [
-        { type: "image", src: `${Shoe}` },
-        { type: "image", src: `${Shoe}` },
-        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-      ],
-    },
-    {
-      id: 0,
-      name: "Stylish Jacket",
-      media: [
-        { type: "image", src: `${Shoe}` },
-        { type: "image", src: `${Shoe}` },
-        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-      ],
-    },
-    {
-      id: 0,
-      name: "Stylish Jacket",
-      media: [
-        { type: "image", src: `${Shoe}` },
-        { type: "image", src: `${Shoe}` },
-        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-      ],
-    },
-    {
-      id: 0,
-      name: "Stylish Jacket",
-      media: [
-        { type: "image", src: `${Shoe}` },
-        { type: "image", src: `${Shoe}` },
-        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-      ],
-    },
-    {
-      id: 0,
-      name: "Stylish Jacket",
-      media: [
-        { type: "image", src: `${Shoe}` },
-        { type: "image", src: `${Shoe}` },
-        { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-      ],
-    },
-    // Other sample products remain the same...
-  ];
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = document.querySelectorAll("section");
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+          // This section is in view, update the activeNav
+          setActiveNav(`#${section.id}`);
+        }
+      });
+    };
 
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   // Animation variants for sections
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -137,9 +78,9 @@ function Sections({ activeNav }) {
       )}
 
       {activeNav === "#products" && (
-          <div>
-            <ProductsList sampleProducts={sampleProducts} />
-          </div>
+        <div>
+          <ProductsList />
+        </div>
       )}
 
       {activeNav === "#contact" && (
@@ -161,7 +102,7 @@ function Sections({ activeNav }) {
                 WebkitBackdropFilter: "blur(12px)",
               }}
             >
-              <h3 className="text-lg  lg:text-2xl font-semibold mb-4 text-center">
+              <h3 className="text-lg  lg:text-2xl font-semibold mb-3 lg:mb-4 text-center">
                 Our Mission
               </h3>
               <p className="mb-4 text-justify text-sm lg:text-lg">
@@ -170,7 +111,7 @@ function Sections({ activeNav }) {
                 comfortable products that not only enhance your wardrobe but
                 empower your lifestyle.
               </p>
-              <h3 className="text-lg lg:text-2xl font-semibold mb-4 text-center">
+              <h3 className="text-lg lg:text-2xl font-semibold mb-3 lg:mb-4 text-center">
                 Our Vision
               </h3>
               <p className="text-justify text-sm  lg:text-lg">
@@ -187,15 +128,15 @@ function Sections({ activeNav }) {
                 WebkitBackdropFilter: "blur(12px)",
               }}
             >
-              <h3 className="text-lg lg:text-2xl font-semibold mb-4 text-center">
+              <h3 className="text-lg lg:text-2xl font-semibold mb-3 lg:mb-4 text-center">
                 Our Values
               </h3>
-              <ul className="list-disc pl-5 space-y-2 text-justify mb-4 text-sm  lg:text-lg">
+              <ul className="list-disc pl-5 space-y-2 text-justify mb-3 lg:mb-4 text-sm  lg:text-lg">
                 <li>
                   <strong>Quality:</strong> Premium materials and craftsmanship
                   to ensure lasting durability.
                 </li>
-                <li>
+                <li className="hidden lg:block">
                   <strong>Sustainability:</strong> We aim to minimize our
                   environmental footprint with eco-friendly practices.
                 </li>
@@ -214,14 +155,20 @@ function Sections({ activeNav }) {
                 </p>
                 <ul className="list-none">
                   <li className="mb-2">
-                    <strong>Email:</strong> support@defender.com
+                    <strong>Email:</strong>
+                    <a href="mailto:defenderboot@gmail.com">
+                      defenderboot@gmail.com
+                    </a>
                   </li>
+
                   <li className="mb-2">
-                    <strong>Phone:</strong> +1 (800) 123-4567
+                    <strong>Phone:</strong>
+                    <a href="tel:0552278970">0552278970</a>
                   </li>
+
                   <li className="mb-2">
-                    <strong>Address:</strong> 123 Fashion Street, New York, NY,
-                    10001
+                    <strong>Address:</strong> Defender, Taj Al Samy Trading EST,
+                    Al Samra, Hail, KSA 55425
                   </li>
                 </ul>
               </div>
@@ -241,7 +188,7 @@ function Sections({ activeNav }) {
           transition={{ duration: 0.8, ease: "easeInOut" }}
         >
           <div>
-            <AllProductsList image={Shoe} />
+            <AllProductsList />
           </div>
         </motion.section>
       )}
