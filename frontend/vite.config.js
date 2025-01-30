@@ -8,3 +8,4 @@ export default defineConfig({
     host: true,  // or you can use '0.0.0.0' to bind to all IP addresses
   },
 })
+ 

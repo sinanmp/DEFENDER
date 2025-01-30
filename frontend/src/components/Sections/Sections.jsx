@@ -6,9 +6,7 @@ import ProductsList from "../Products/ProductList";
 import "./Sections.css";
 import { useEffect } from "react";
 
-
 function Sections({ activeNav }) {
-
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll("section");
@@ -20,7 +18,7 @@ function Sections({ activeNav }) {
         }
       });
     };
-  
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -80,9 +78,9 @@ function Sections({ activeNav }) {
       )}
 
       {activeNav === "#products" && (
-          <div>
-            <ProductsList/>
-          </div>
+        <div>
+          <ProductsList />
+        </div>
       )}
 
       {activeNav === "#contact" && (
@@ -138,7 +136,7 @@ function Sections({ activeNav }) {
                   <strong>Quality:</strong> Premium materials and craftsmanship
                   to ensure lasting durability.
                 </li>
-                <li>
+                <li className="hidden lg:block">
                   <strong>Sustainability:</strong> We aim to minimize our
                   environmental footprint with eco-friendly practices.
                 </li>
@@ -157,14 +155,20 @@ function Sections({ activeNav }) {
                 </p>
                 <ul className="list-none">
                   <li className="mb-2">
-                    <strong>Email:</strong> support@defender.com
+                    <strong>Email:</strong>
+                    <a href="mailto:defenderboot@gmail.com">
+                      defenderboot@gmail.com
+                    </a>
                   </li>
+
                   <li className="mb-2">
-                    <strong>Phone:</strong> +1 (800) 123-4567
+                    <strong>Phone:</strong>
+                    <a href="tel:0552278970">0552278970</a>
                   </li>
+
                   <li className="mb-2">
-                    <strong>Address:</strong> 123 Fashion Street, New York, NY,
-                    10001
+                    <strong>Address:</strong> Defender, Taj Al Samy Trading EST,
+                    Al Samra, Hail, KSA 55425
                   </li>
                 </ul>
               </div>
@@ -184,7 +188,7 @@ function Sections({ activeNav }) {
           transition={{ duration: 0.8, ease: "easeInOut" }}
         >
           <div>
-            <AllProductsList/>
+            <AllProductsList />
           </div>
         </motion.section>
       )}
