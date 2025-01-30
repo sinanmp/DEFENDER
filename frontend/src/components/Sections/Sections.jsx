@@ -36,9 +36,7 @@ function Sections({ activeNav }) {
       {/* If it's mobile, show all sections without using activeNav */}
       {isMobile ? (
         <>
-        <div className="h-[5vh]">
-
-        </div>
+          <div className="h-[5vh]"></div>
           <motion.section
             id="home"
             className="pt-9 bg-cover bg-center px-12 text-white"
@@ -85,7 +83,7 @@ function Sections({ activeNav }) {
 
           <motion.section
             id="products"
-            className="p-12 pt-3 w-full"
+            className="p-12 py-3 w-full"
             variants={sectionVariants}
             initial="hidden"
             animate="visible"
@@ -93,9 +91,7 @@ function Sections({ activeNav }) {
             transition={{ duration: 0.8, ease: "easeInOut" }}
           >
             <div className="h-[2vh]"></div>
-            <div>
-              {/* <ProductsList /> */}
-            </div>
+            <div><ProductsList /></div>
           </motion.section>
 
           <motion.section
@@ -188,7 +184,7 @@ function Sections({ activeNav }) {
               </div>
             </div>
           </motion.section>
-
+          {/* 
           <motion.section
             id="allProducts"
             className="p-12 pt-3 w-full"
@@ -199,7 +195,7 @@ function Sections({ activeNav }) {
             transition={{ duration: 0.8, ease: "easeInOut" }}
           >
             <AllProductsList />
-          </motion.section>
+          </motion.section> */}
         </>
       ) : (
         // Desktop or tablet view, only show based on activeNav
