@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL:"https://defender-api-roan.vercel.app/",
+
+    baseURL:"https://defender-api-roan.vercel.app/api",
     headers:{
         "Content-Type": "application/json",
     },
