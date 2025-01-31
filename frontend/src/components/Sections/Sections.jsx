@@ -55,7 +55,7 @@ function Sections({ activeNav, setActiveNav }) {
                 </h1>
               </div>
               <div className="lg:flex-1"></div>
-              <div className="flex-1 text-center space-y-2 lg:space-y-6 flex flex-col gap-6">
+              <div className="flex-1 text-center space-y-2 lg:space-y-6f flex flex-col gap-6">
                 <p className="hidden lg:block sm:text-md md:text-lg leading-relaxed text-black">
                   At Defender, we believe fashion is more than just what you
                   wear – it's how you express yourself, conquer challenges, and

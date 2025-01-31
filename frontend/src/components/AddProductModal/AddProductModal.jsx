@@ -189,7 +189,6 @@ const AddProductModal = ({ isOpen, onClose, onSubmit }) => {
                             onChange={
                                 handleVideoChange
                             }
-                            required
                             />
                     </div>
 

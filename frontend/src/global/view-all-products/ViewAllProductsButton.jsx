@@ -9,7 +9,7 @@ function ViewAllProducts({ activeNav, setActiveNav }) {
     <>
       {/* Show the button only if activeNav is "allProducts" or "products" */}
       {(activeNav === "#allProducts" || activeNav === "#products") && (
-        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
+        <div className="fixed hidden lg:block bottom-8 left-1/2 transform -translate-x-1/2 z-50">
           <button
             onClick={() => {
               if (activeNav === "#allProducts") {
