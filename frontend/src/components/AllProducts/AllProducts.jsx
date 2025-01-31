@@ -48,7 +48,6 @@ function AllProductsList() {
         </div>
       ) : (
         <>
-          <div className="text-white">{data}</div>
           {/* Product Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6">
             {products.map((product, index) => (

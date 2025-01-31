@@ -81,7 +81,7 @@ export default function CarouselProduct({
       {/* Floating WhatsApp Button */}
       <div className="absolute bottom-2 right-3 z-50">
         <a
-          target="_blank"
+          href="https://wa.me/+9660552278970"
           rel="noopener noreferrer"
           className="hover:cursor-pointer flex items-center justify-center gap-1 border-2 border-green-500 text-white px-1.5 py-1 lg:px-2.5 lg:py-1.5 lg:pb-2 rounded-full hover:bg-green-600 transition-colors duration-200 shadow-md"
         >
