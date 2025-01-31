@@ -4,7 +4,7 @@ import AllProductsList from "../AllProducts/AllProducts";
 import ProductsList from "../Products/ProductList";
 import "./Sections.css";
 
-function Sections({ activeNav }) {
+function Sections({ activeNav, setActiveNav }) {
   const [isMobile, setIsMobile] = useState(false); // Track if the screen is mobile
 
   // Detect screen size (mobile or desktop) on load and resize
@@ -48,15 +48,15 @@ function Sections({ activeNav }) {
           >
             <div className="flex flex-col gap-6 lg:gap-0 lg:flex-row lg:items-center">
               <div className="flex-1">
-                <h1 className="text-[4vw] sm:text-3xl md:text-4xl font-bold md:leading-normal">
+                <h1 className="text-[4vw] sm:text-3xl md:text-4xl font-bold md:leading-normal text-justify">
                   Defender: Where Style Meets Durability – Empowering You to
                   Conquer Every Day with Confidence, Comfort, and Timeless
                   Elegance.
                 </h1>
               </div>
-              <div className="flex-[0.4] lg:flex-1"></div>
-              <div className="flex-1 text-center space-y-6 flex flex-col gap-6">
-                <p className="sm:text-md md:text-lg leading-relaxed">
+              <div className="lg:flex-1"></div>
+              <div className="flex-1 text-center space-y-2 lg:space-y-6 flex flex-col gap-6">
+                <p className="hidden lg:block sm:text-md md:text-lg leading-relaxed text-black">
                   At Defender, we believe fashion is more than just what you
                   wear – it's how you express yourself, conquer challenges, and
                   make a statement. <br />
@@ -73,7 +73,10 @@ function Sections({ activeNav }) {
                   redefine their everyday wardrobe.
                 </p>
                 <div>
-                  <button className="px-5 py-3 text-md bg-zinc-600 hover:bg-zinc-700 rounded-md">
+                  <button
+                    onClick={() => setActiveNav("#products")}
+                    className="hidden lg:block px-5 py-3 text-md bg-zinc-600 hover:bg-zinc-700 rounded-md"
+                  >
                     Explore Products
                   </button>
                 </div>
@@ -83,7 +86,7 @@ function Sections({ activeNav }) {
 
           <motion.section
             id="products"
-            className="p-12 py-3 w-full"
+            className="w-full"
             variants={sectionVariants}
             initial="hidden"
             animate="visible"
@@ -91,7 +94,9 @@ function Sections({ activeNav }) {
             transition={{ duration: 0.8, ease: "easeInOut" }}
           >
             <div className="h-[2vh]"></div>
-            <div><ProductsList /></div>
+            <div>
+              <ProductsList />
+            </div>
           </motion.section>
 
           <motion.section
@@ -103,11 +108,11 @@ function Sections({ activeNav }) {
             exit="hidden"
             transition={{ duration: 0.8, ease: "easeInOut" }}
           >
-            <div className="flex flex-col lg:flex-row justify-center items-center w-full space-y-8 lg:space-y-0 ">
+            <div className="flex flex-col lg:flex-row justify-center items-center w-full space-y-8 lg:space-y-0">
               <div
-                className="flex-1 max-w-lg max-h-full md:max-w-2xl lg:max-w-xs xl:max-w-lg mx-auto p-6 md:p-8 rounded-lg shadow-lg text-white"
+                className="flex-1 bg-opacity-50 lg:bg-opacity-20 max-w-lg max-h-full md:max-w-2xl lg:max-w-xs xl:max-w-lg mx-auto p-6 md:p-8 rounded-lg shadow-lg text-white"
                 style={{
-                  background: "rgba(31, 41, 55, 0.2)",
+                  background: "rgba(31, 41, 55, 0.5)", // default for large screens
                   backdropFilter: "blur(12px)",
                   WebkitBackdropFilter: "blur(12px)",
                 }}
@@ -130,10 +135,11 @@ function Sections({ activeNav }) {
                   always prioritizing comfort and performance.
                 </p>
               </div>
+
               <div
-                className="flex-1 max-w-lg md:max-w-2xl lg:max-w-lg xl:max-w-xl mx-auto p-6 lg:p-8 rounded-lg shadow-lg text-white"
+                className="flex-1 bg-opacity-50 lg:bg-opacity-20 max-w-lg md:max-w-2xl lg:max-w-lg xl:max-w-xl mx-auto p-6 lg:p-8 rounded-lg shadow-lg text-white"
                 style={{
-                  background: "rgba(31, 41, 55, 0.2)",
+                  background: "rgba(31, 41, 55, 0.5)", // default for large screens
                   backdropFilter: "blur(12px)",
                   WebkitBackdropFilter: "blur(12px)",
                 }}
@@ -184,6 +190,7 @@ function Sections({ activeNav }) {
               </div>
             </div>
           </motion.section>
+
           {/* 
           <motion.section
             id="allProducts"

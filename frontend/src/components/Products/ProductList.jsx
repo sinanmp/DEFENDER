@@ -53,7 +53,7 @@ function ProductsList() {
 
   if (loading) {
     return (
-      <div className="h-[75vh] flex justify-center items-center">
+      <div className="flex justify-center items-center">
         <p className="text-xl text-gray-600">Loading products...</p>
       </div>
     );
