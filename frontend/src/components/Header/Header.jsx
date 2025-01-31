@@ -44,7 +44,7 @@ function Header({ activeNav, setActiveNav }) {
       </div>
 
       {/* Navigation Links */}
-      <nav className={`nav gap-[3vw] ${isMenuOpen ? "open" : ""}`}>
+      <nav className={`nav  gap-[3vw] ${isMenuOpen ? "open" : ""}`}>
         <a
           href="#home"
           className={`nav-link ${activeNav === "#home" ? "active" : ""}`}
