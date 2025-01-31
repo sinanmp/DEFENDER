@@ -15,12 +15,12 @@ function WhatsAppButton() {
   }, []);
 
   const handleWhatsAppClick = () => {
-    window.open("https://wa.me/1234567890", "_blank"); // Replace with your WhatsApp number
+    window.open("https://wa.me/+9660552278970", "_blank"); // Replace with your WhatsApp number
   };
 
   return (
     <div>
-      <a href="https://wa.me/+9660552278970">
+      <a >
         <div className="whatsapp-button" onClick={handleWhatsAppClick}>
           <FontAwesomeIcon icon={faWhatsapp} className="whatsapp-icon" />
         </div>
