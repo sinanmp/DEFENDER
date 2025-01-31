@@ -59,7 +59,7 @@ export default function CarouselProduct({
         ))}
 
         {/* Render video first if it exists */}
-        {video.url && (
+        {video.url && currentIndex === images.length &&(
           <div className="w-full h-full flex-shrink-0">
             <video
               src={video.url}
