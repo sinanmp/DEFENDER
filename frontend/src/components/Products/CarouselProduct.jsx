@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
+import { faCaretLeft, faCaretRight,faShareFromSquare } from "@fortawesome/free-solid-svg-icons";
 
 export default function CarouselProduct({
   cardData = { images: [], video: {}, art_number: "ART-2025" },
@@ -50,7 +50,7 @@ export default function CarouselProduct({
         className="relative z-0 flex transition-transform duration-300 w-full h-full"
         style={{
           transform: `translateX(-${currentIndex * 100}%)`, // Adjust sliding
-          transition: 'transform 0.3s ease-in-out', // Smooth transition effect
+          transition: "transform 0.3s ease-in-out", // Smooth transition effect
         }}
       >
         {/* Render images */}
@@ -58,7 +58,7 @@ export default function CarouselProduct({
           <div
             key={index}
             className="w-full h-full flex-shrink-0"
-            style={{ position: 'relative' }}
+            style={{ position: "relative" }}
           >
             <img
               src={image.url}
@@ -70,7 +70,10 @@ export default function CarouselProduct({
 
         {/* Render video first if it exists */}
         {video && currentIndex === images.length && (
-          <div className="w-full h-full flex-shrink-0" style={{ position: 'relative' }}>
+          <div
+            className="w-full h-full flex-shrink-0"
+            style={{ position: "relative" }}
+          >
             <video
               src={video.url}
               autoPlay
@@ -102,7 +105,18 @@ export default function CarouselProduct({
             alt="WhatsApp"
             className="w-3 h-3 lg:w-4 lg:h-4"
           />
-          <div className="text-[9px] md:text-xs font-medium">Order with us</div>
+          <div
+            className="text-[9px] md:text-xs font-medium hidden
+           md:block"
+          >
+            Order with us
+          </div>
+          <div
+            className="text-[9px] md:text-xs font-medium
+           md:hidden"
+          >
+            <FontAwesomeIcon icon={faShareFromSquare} />
+          </div>
         </a>
       </div>
     </div>
