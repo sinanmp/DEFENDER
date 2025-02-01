@@ -36,7 +36,7 @@ function Sections({ activeNav, setActiveNav }) {
       {/* If it's mobile, show all sections without using activeNav */}
       {isMobile ? (
         <>
-          <div className="h-[5vh]"></div>
+          {/* <div className="h-[5vh]"></div> */}
           <motion.section
             id="home"
             className="pt-9 bg-cover bg-center px-12 text-white"

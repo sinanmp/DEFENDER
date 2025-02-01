@@ -16,7 +16,7 @@ function Header({ activeNav, setActiveNav }) {
   };
 
   return (
-    <header className="fixed lg:static flex justify-between items-center px-[6vw] w-full h-auto z-50">
+    <header className="flex justify-between items-center px-[6vw] w-full h-auto z-50">
       <div className="flex flex-col items-center pt-[1.5vw] md:pt-[0.4vw]">
         <img
           className="h-[4vw] lg:h-[2.5vw] lg:pt-[0.5vw]"
