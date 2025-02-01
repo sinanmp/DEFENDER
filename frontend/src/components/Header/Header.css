@@ -38,7 +38,7 @@
 }
 
 /* Horizontal Navbar for Larger Screens */
-@media (min-width: 1025px) {
+@media (min-width: 769px) {
   .nav {
     display: flex;
     /* Show the nav links horizontally */

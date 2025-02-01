@@ -3,15 +3,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 
 export default function CarouselProduct({
-  cardData = { images: [], video: {}, productName: "Product" },
+  cardData = { images: [], video: {}, art_number: "ART-2025" },
   animationConfig = { stiffness: 260, damping: 20 },
 }) {
-  const { images, video, productName } = cardData;
+  const { images, video, art_number } = cardData;
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Get total number of slides (images + 1 for video if it exists)
-  const totalSlides = images.length + (video.url ? 1 : 0);
+  let totalSlides = images.length;
+  if (video != null) {
+    totalSlides += 1;
+  }
 
   // Handle Next Button click
   const handleNext = () => {
@@ -24,7 +27,7 @@ export default function CarouselProduct({
   };
 
   return (
-    <div className="relative w-full rounded-lg border-2 border-white border-opacity-50 overflow-hidden">
+    <div className="relative w-full aspect-square rounded-lg border-2 border-white border-opacity-50 overflow-hidden">
       <div className="absolute inset-0 z-10 flex items-center justify-between px-1">
         {/* Prev Button */}
         <button
@@ -44,27 +47,36 @@ export default function CarouselProduct({
       </div>
 
       <div
-        className="relative z-0 flex transition-transform duration-300"
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        className="relative z-0 flex transition-transform duration-300 w-full h-full"
+        style={{
+          transform: `translateX(-${currentIndex * 100}%)`, // Adjust sliding
+          transition: 'transform 0.3s ease-in-out', // Smooth transition effect
+        }}
       >
         {/* Render images */}
         {images.map((image, index) => (
-          <div key={index} className="w-full h-full flex-shrink-0">
+          <div
+            key={index}
+            className="w-full h-full flex-shrink-0"
+            style={{ position: 'relative' }}
+          >
             <img
               src={image.url}
               alt={`card-${index}`}
-              className="w-full h-full object-cover rounded-lg"
+              className="w-full h-full object-cover absolute top-0 left-0 rounded-lg" // Ensure object-contain for image fit
             />
           </div>
         ))}
 
         {/* Render video first if it exists */}
-        {video.url && currentIndex === images.length &&(
-          <div className="w-full h-full flex-shrink-0">
+        {video && currentIndex === images.length && (
+          <div className="w-full h-full flex-shrink-0" style={{ position: 'relative' }}>
             <video
               src={video.url}
               autoPlay
-              className="w-full h-full object-contain rounded-lg"
+              loop
+              muted
+              className="w-full h-full object-cover absolute top-0 left-0 rounded-lg" // Ensure object-contain for video fit
             />
           </div>
         )}
@@ -75,7 +87,7 @@ export default function CarouselProduct({
         className="absolute bottom-0 left-0 w-full bg-gradient-to-r from-gray-500 via-transparent
         to-transparent p-3 text-white z-50"
       >
-        <h3 className="text-xs md:text-md font-bold truncate">{productName}</h3>
+        <h3 className="text-xs md:text-md font-bold truncate">{art_number}</h3>
       </div>
 
       {/* Floating WhatsApp Button */}
@@ -83,7 +95,7 @@ export default function CarouselProduct({
         <a
           href="https://wa.me/+9660552278970"
           rel="noopener noreferrer"
-          className="hover:cursor-pointer flex items-center justify-center gap-1 border-2 border-green-500 text-white px-1.5 py-1 lg:px-2.5 lg:py-1.5 lg:pb-2 rounded-full hover:bg-green-600 transition-colors duration-200 shadow-md"
+          className="hover:cursor-pointer flex items-center justify-center gap-1 border-2 border-green-500 text-white px-1.5 py-1 lg:px-2.5 lg:py-1.5 lg:pb-2 rounded-full bg-green-600 transition-colors duration-200 shadow-md"
         >
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"

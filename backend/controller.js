@@ -14,8 +14,8 @@ class Controller {
     async  login(req,res) {
         try {
             const {email , password} = req.body
-            console.log('request gotted', req.body)
             if(email==process.env.ADMIN_USERNAME && password == process.env.ADMIN_PASS){
+                console.log('request gotted', req.body)
                 return res.status(200).json({
                     error:false,
                     message:"Admin logged in successfully"
