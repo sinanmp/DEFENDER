@@ -47,14 +47,14 @@ function Header({ activeNav, setActiveNav }) {
       <nav className={`nav  gap-[3vw] ${isMenuOpen ? "open" : ""}`}>
         <a
           href="#home"
-          className={`nav-link ${activeNav === "#home" ? "active" : ""}`}
+          className={`nav-link text-black md:text-white ${activeNav === "#home" ? "active" : ""} `}
           onClick={() => handleNavClick("#home")}
         >
           Home
         </a>
         <a
           href="#products"
-          className={`nav-link ${
+          className={`nav-link text-black md:text-white ${
             activeNav === "#products" || activeNav === "#allProducts"
               ? "active"
               : ""
@@ -65,7 +65,7 @@ function Header({ activeNav, setActiveNav }) {
         </a>
         <a
           href="#contact"
-          className={`nav-link ${activeNav === "#contact" ? "active" : ""}`}
+          className={`nav-link text-black md:text-white ${activeNav === "#contact" ? "active" : ""}`}
           onClick={() => handleNavClick("#contact")}
         >
           Contact
