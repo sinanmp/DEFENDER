@@ -48,7 +48,7 @@ function Sections({ activeNav, setActiveNav }) {
           >
             <div className="flex flex-col gap-6 lg:gap-0 lg:flex-row lg:items-center">
               <div className="flex-1">
-                <h1 className="text-[4vw] sm:text-3xl md:text-4xl font-bold md:leading-normal text-justify">
+                <h1 className="text-[4vw] sm:text-3xl md:text-4xl font-bold md:leading-normal text-justify ">
                   Defender: Where Style Meets Durability – Empowering You to
                   Conquer Every Day with Confidence, Comfort, and Timeless
                   Elegance.
