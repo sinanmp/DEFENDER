@@ -12,8 +12,12 @@ const Login = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prevData) => ({ ...prevData, [name]: value }));
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
     };
+
 
     useEffect(()=>{
         const isAuthenticated = localStorage.getItem("DefenderauthToken");
@@ -23,36 +27,29 @@ const Login = () => {
     },[])
 
     const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
         try {
-            setLoading(true)
-            console.log('formdata : ,',formData)
-            const result = await api.login(formData)
-            console.log('result : ',result)
-            if (result.error) {
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: result.error.message || "Something went wrong!",
-                });
-            } else {
-                localStorage.setItem("DefenderauthToken", "defendertoken123");
-                navigate("/admin/dashboard")
+            const response = await api.login(formData)
+            if (!response.error) {
                 Swal.fire({
                     icon: "success",
-                    title: "Logged IN",
-                    text: "Admin Logged In successfully!",
-                    timer: 2000,
+                    title: "Login Successful",
                     showConfirmButton: false,
+                    timer: 1500,
                 });
+                localStorage.setItem('DefenderauthToken','token')
+                navigate("/admin/dashboard"); // Redirect after successful login
             }
         } catch (error) {
+            console.log(error)
             Swal.fire({
                 icon: "error",
-                title: "Oops...",
-                text: error.message || "Something went wrong!",
+                title: "Login Failed",
+                text: error.response ? error.response.data.message : "An error occurred",
             });
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
     };
 
@@ -101,9 +98,10 @@ const Login = () => {
                     </div>
                     <button
                         type="submit"
+                        disabled={loading}
                         className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-200"
                     >
-                        Login
+                        {loading ? "Logging in..." : "Login"}
                     </button>
                 </form>
             </div>
